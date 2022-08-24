@@ -3,7 +3,7 @@ import {Button} from 'react-bootstrap'
 import {useState} from "react";
 import { Navigate } from "react-router-dom";
 import LoginForm from './loginform';
-
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import axios from "axios";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -61,13 +61,15 @@ export default function Login() {
             })
             .catch(err => console.log(err.response)) 
     }
-    return (
-      <>
+    return  (
+      <div className='centered-div'>
         <div>
-        <LoginForm/>
+        
         <Button  onChange= {onPressHandler()}>
         <p className="text-center">
+        <Link className="nav-link" to={'/loginform'}>
             Login Doctor
+            </Link>
           </p>
         </Button>
     </div>
@@ -78,7 +80,7 @@ export default function Login() {
           </p>
         </Button>
     </div>
-    </>
+    </div>
 
     // <div>
     //      <Button>Login</Button>
