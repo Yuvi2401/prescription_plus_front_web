@@ -1,25 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
-import {Provider} from 'react-redux';
-import {Store} from './redux/store'
+
 
 import Login from './components/Login/Login';
 import LoginForm from './components/Login/loginform';
+import HomeNav from './components/Login/homenav';
+import SignIn from './components/Login/signin';
 
 function App() {
   return (
    
-    <Provider store={Store}>
+    <>
+    <div>
+      <HomeNav/>
+    </div>
+    <div>
+      <SignIn/>
+    </div>
     <div >
       <Login/>
     </div>
-    <div className="auth-wrapper">
-          <div className="auth-inner">
-            
-          </div>
+
+      <div className="auth-wrapper">
+        <div className="auth-inner"> 
         </div>
-       
-    </Provider>
+      </div>
+    </>
     
   );
 }

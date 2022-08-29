@@ -1,14 +1,10 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
-import {useState} from "react";
-import { Navigate } from "react-router-dom";
-import LoginForm from './loginform';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import axios from "axios";
 
-import { useSelector, useDispatch } from "react-redux";
-import { setDoctor } from "../../redux/actions";
-import { server_url } from '../../config'
+import { Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+
+
 
 
 // export default function Login() {
@@ -26,59 +22,30 @@ import { server_url } from '../../config'
 
 
 export default function Login() {
-    const dispatch = useDispatch()
-    const Rx = useSelector(state=>state.RxReducer);
-    const onPressHandler = async() =>{
-            const url = server_url+'/doctor/_id/?id=62de6d5ee28cf48b1819618b'
-            
-            // const url = server_url+'/doctor/_id/?id=62de6d5ee28cf48b1819618b'
-           
-            console.log(url)
-            await axios.get(url)
-            .then(async response => {
-                var doc = response.data.data
-                // console.log("----------doc--------------",response.data.data)
-                dispatch(setDoctor({
-                    mci: doc.mci, 
-                    firstname: doc.firstname, 
-                    lastname: doc.lastname, 
-                    email:doc.email, 
-                    mobile: doc.mobile, 
-                    degree:doc.degree,
-                    councilstate: doc.council.state, 
-                    councilid: doc.council.id, 
-                    visitngcard:doc.visitingcard, 
-                    signature: doc.signature,
-                    sex: doc.sex, 
-                    age: doc.age, 
-                    documents:doc.documents, 
-                    addresscity: doc.address.city, 
-                    addresslocality: doc.address.locality,
-                    addresspincode: doc.address.pincode, 
-                    addressstate: doc.address.state
-                  }))
-                // navigation.navigate('main_screen');
-            })
-            .catch(err => console.log(err.response)) 
-    }
+    
     return  (
       <div className='centered-div'>
         <div>
-        
-        <Button  onChange= {onPressHandler()}>
-        <p className="text-center">
         <Link className="nav-link" to={'/loginform'}>
+        <Button>
+        <p className="text-center">
+       
             Login Doctor
-            </Link>
+           
           </p>
         </Button>
+        </Link>
     </div>
       <div>
+      <Link className="nav-link" to={'/registerform'}>
         <Button >
-        <p className="text-center">
-            Register Doctor
+          <p className="text-center">
+         
+                Register Doctor
+           
           </p>
         </Button>
+        </Link>
     </div>
     </div>
 

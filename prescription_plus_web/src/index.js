@@ -7,22 +7,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import LoginForm from './components/Login/loginform';
 import Login from './components/Login/Login';
+import RegisterForm from './components/Login/registerform';
 
+import {Provider} from 'react-redux';
+import {Store} from './redux/store'
+import Reg_doctor from './components/Login/doctorReg';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
+  <Provider store={Store}>
   <React.StrictMode>
     <Router>
       {/* <App/> */}
         <Routes>
           {/* <Route exact path="/" element={<Login/>} /> */}
-          <Route exact path="/" element={<App/>} />
+            <Route exact path="/" element={<App/>} />
             <Route exact path="/loginform" element={<LoginForm/>} />
             <Route exact path="/login" element={<Login/>} />
+            <Route exact path="/registerform" element={<RegisterForm/>} />
+            <Route exact path="/doctor-registration" element={<Reg_doctor/>} />
+
               {/* <Route path="/sign-up" element={<SignUp/>} /> */}
         </Routes>
       </Router>
   </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

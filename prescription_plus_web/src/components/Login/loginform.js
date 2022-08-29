@@ -4,12 +4,14 @@ import Card from 'react-bootstrap/Card';
 import '../../App.css';
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import axios from "axios";
 
 function LoginForm() {
+  // 
   return (
  
-    <div className='centered-div'>
-    <Card style={{ width: '18rem' }}>
+    <div>
+    <Card style={{ width: '22rem' }}>
     <Card.Body>
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
