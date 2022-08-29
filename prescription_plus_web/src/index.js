@@ -12,6 +12,7 @@ import RegisterForm from './components/Login/registerform';
 import {Provider} from 'react-redux';
 import {Store} from './redux/store'
 import Reg_doctor from './components/Login/doctorReg';
+import HomePage from './components/Home/Home';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={Store}>
@@ -25,6 +26,7 @@ root.render(
             <Route exact path="/login" element={<Login/>} />
             <Route exact path="/registerform" element={<RegisterForm/>} />
             <Route exact path="/doctor-registration" element={<Reg_doctor/>} />
+            <Route exact path= "/home" element= {<HomePage/>} />
 
               {/* <Route path="/sign-up" element={<SignUp/>} /> */}
         </Routes>
