@@ -6,6 +6,7 @@ import Split from "react-split";
 import './index.css'
 import Medicines from "./Medicines/Medicines";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Complaints from "./Complaints/Complaints"
 
 const Prescription =()=>  {
     return (
@@ -33,7 +34,7 @@ const Prescription =()=>  {
                         <Medicines/>
                     </Tab>
                     <Tab eventKey="complaints" title="Complaints">
-                    Add more keys
+                        <Complaints/>
                     </Tab>
                     <Tab eventKey="labtest" title="Lab Tests">
                     Add more keys

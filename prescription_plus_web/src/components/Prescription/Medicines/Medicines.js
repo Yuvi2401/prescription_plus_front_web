@@ -13,9 +13,10 @@ const Medicines = () =>{
   const [medicines, setMedicines] = useState([])
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState(false);
   const [dosage, setDosage] = useState("")
   const [duration, setDuration] = useState("")
-  const [durationnumber,setDurationNumber] = useState("")
+  const [durationtype,setDurationType] = useState("")
   const [when,setWhen] = useState("")
   const [advice,setAdvice]= useState("")
   const [quantity,setQuantity] = useState("")
@@ -70,50 +71,53 @@ const Medicines = () =>{
       setLoading(false);
     };
     if (query.length > 2) fetchMedicine();
+    if(query.length === 0)setPosts([])
   }, [query]);
 
 
 
   const onPressHandler = (key,value) =>{
-    console.log(key,value)
     setMed({key,value})
     setPosts([])
     setOpen(!open)
+    setSearch(!search)
     }
   
   const removemedicine = (k) =>{
       dispatch(removeMedicine(k));
     }
-  const addMedicine = () =>{
-    console.log("----addMedicine-----")
-    console.log(dosage)
-    var medicine ={
-      "name":med.value,
-      "id":med.key,
-      "dosage":dosage,
-      "duration":durationnumber +" "+duration,
-      "when":when,
-      "advice":advice,
-      "quantity":quantity
+
+  const UpdateMedicineDetails = (value)=>{
+      removemedicine(value.term)
+      setDosage(value.dosage)
+      setDuration(value.duration)
+      setWhen(value.when)
+      setDurationType(value.durationtype)
+      setAdvice(value.additional_info)
+      setQuantity(value.quantity)
+      setMed({"key":value.medSCTID,"value":value.term})
+      setOpen(!open)
+      setSearch(!search)
     }
-    dispatch(setMedicine({medSCTID: med.key,
+  const addMedicine =() =>{
+    console.log("----addMedicine-----")
+   dispatch(setMedicine({
+        medSCTID: med.key,
       term: med.value,
       dosage: dosage,
-      duration: durationnumber,
-      durationtype: duration,
+      duration: duration,
+      durationtype: durationtype,
       when:  when,
       quantity: quantity,
       additional_info: advice}));
-    console.log(medicine)
-    setMedicines(medicine)
     setDosage("")
     setDuration("")
     setWhen("")
     setOpen(!open)
-    setDurationNumber("")
+    setDurationType("")
     setAdvice("")
     setQuantity("")
-   
+    setSearch(!search)
   }
 
   return (
@@ -122,6 +126,7 @@ const Medicines = () =>{
       placeholder="Search.." 
       className="search" 
       onChange={(e) => setQuery(e.target.value)}
+      disabled = {search}
       />
       {loading ? (
         <h4>Loading ...</h4>
@@ -148,7 +153,8 @@ const Medicines = () =>{
                   </Card.Text>
                   <Card.Link href="#">Card Link</Card.Link>
                   <Card.Link href="#">Another Link</Card.Link> */}
-                  <Button variant="secondary" onClick={()=>{removemedicine(val.term)}} >Remove Medicine</Button>
+                  <Button variant="secondary" disabled = {search} onClick={()=>{removemedicine(val.term)}} >Remove Medicine</Button>
+                  <Button variant="secondary" disabled = {search} onClick={()=>{UpdateMedicineDetails(val)}} >Edit Medicine</Button>
                 </Card.Body>
               </Card>
             ))}
@@ -161,7 +167,10 @@ const Medicines = () =>{
               <InputGroup.Text>{med.value}</InputGroup.Text>
             </Form.Group> 
           <Form.Group className="mb-3" controlId="formGridDosage">
-            <Form.Label>Dosage</Form.Label>
+            <Form.Label><h3>Dosage</h3></Form.Label>
+            <Button className="mb-1" variant="outline-dark">
+              {dosage}
+            </Button>
             <br />
             <ButtonGroup className="mb-3">
                 {Dosage.map((val) => (
@@ -174,12 +183,15 @@ const Medicines = () =>{
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formGridDuration">
-            <Form.Label>Duration</Form.Label>
-            <Form.Control placeholder="" onChange={(e) => setDurationNumber(e.currentTarget.value)} />
+            <Form.Label><h3>Duration</h3></Form.Label>
+            <InputGroup className="mb-3">
+            <Form.Control placeholder="" defaultValue={Rxmedicines.duration} onChange={(e) => setDuration(e.currentTarget.value)} />
+            <InputGroup.Text id="basic-addon2">{durationtype}</InputGroup.Text>
+            </InputGroup>
             <br />
             <ButtonGroup className="mb-3">
                 {Duration.map((val) => (
-                  <Button variant="secondary" onClick={()=>setDuration(val.name)}>
+                  <Button variant="secondary" onClick={()=>setDurationType(val.name)}>
                     {val.name}
                   </Button>
                 ))}
@@ -188,7 +200,10 @@ const Medicines = () =>{
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formGridWhen">
-            <Form.Label>When</Form.Label>
+            <Form.Label> <h3>When</h3></Form.Label>
+            <Button className="mb-1" variant="outline-dark">
+              {when}
+            </Button>
             <br />
             <ButtonGroup className="mb-3">
                 {When.map((val) => (
