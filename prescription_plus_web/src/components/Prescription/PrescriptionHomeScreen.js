@@ -9,8 +9,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Complaints from "./Complaints/Complaints"
 import LabTest from "./LabTest/LabTest";
 import Additionalinfo from "./Additionalinfo/Additionalinfo";
+import RxViewer from "../RxViewer/viewer_cntrl";
+import RxViewerNav from "./RxViewerNav";
+
+
 
 const Prescription =()=>  {
+    
     return (
         <Split className="split" >
             {/* <Nav activeKey="/home" onSelect={(selectedKey) => alert(`selected ${selectedKey}`)} >
@@ -30,7 +35,7 @@ const Prescription =()=>  {
                     className="mb-3"
                     >
                     <Tab eventKey="home" title="Home">
-                    Hello EveryOne!!
+                    Hello EveryOne!! 
                     </Tab>
                     <Tab eventKey="medicine" title="Medicines">
                         <Medicines/>
@@ -47,7 +52,8 @@ const Prescription =()=>  {
                 </Tabs>
                 </div>
             <div>
-                Upload Rx
+                <RxViewerNav/>
+                
             </div>
     </Split>
     )
