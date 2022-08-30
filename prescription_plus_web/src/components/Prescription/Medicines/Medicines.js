@@ -60,6 +60,7 @@ const Medicines = () =>{
       res = res.data;
         
         let medicine = []
+        medicine.push({key:"manual",value:query})
         for (let [k, val] of Object.entries(res)) {
 
             medicine.push({
@@ -71,7 +72,7 @@ const Medicines = () =>{
       setLoading(false);
     };
     if (query.length > 2) fetchMedicine();
-    if(query.length === 0)setPosts([])
+    if(query.length < 2)setPosts([])
   }, [query]);
 
 
@@ -123,7 +124,7 @@ const Medicines = () =>{
   return (
     <div >
       <input type='text' 
-      placeholder="Search.." 
+      placeholder="Search Medicines.." 
       className="search" 
       onChange={(e) => setQuery(e.target.value)}
       disabled = {search}

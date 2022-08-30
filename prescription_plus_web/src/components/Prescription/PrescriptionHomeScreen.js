@@ -7,6 +7,8 @@ import './index.css'
 import Medicines from "./Medicines/Medicines";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Complaints from "./Complaints/Complaints"
+import LabTest from "./LabTest/LabTest";
+import Additionalinfo from "./Additionalinfo/Additionalinfo";
 
 const Prescription =()=>  {
     return (
@@ -37,10 +39,10 @@ const Prescription =()=>  {
                         <Complaints/>
                     </Tab>
                     <Tab eventKey="labtest" title="Lab Tests">
-                    Add more keys
+                        <LabTest/>
                     </Tab>
                     <Tab eventKey="additioninfo" title="Additional Info">
-                    Add more keys
+                        <Additionalinfo/>
                     </Tab>
                 </Tabs>
                 </div>

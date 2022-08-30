@@ -55,7 +55,7 @@ const Complaints = () =>{
         setLoading(false);
         };
         if (query.length > 2) fetchSymptoms();
-        if(query.length === 0)setSymptoms([])
+        if(query.length < 0)setSymptoms([])
     }, [query]);
 
     const onPressHandler = (key,value) =>{
@@ -98,7 +98,7 @@ const Complaints = () =>{
     return (
         <div >
             <input type='text' 
-            placeholder="Search.." 
+            placeholder="Search Complaints.." 
             className="search" 
             onChange={(e) => setQuery(e.target.value)}
             disabled = {search}
