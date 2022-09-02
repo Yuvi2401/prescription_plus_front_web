@@ -13,22 +13,24 @@ import {Provider} from 'react-redux';
 import {Store} from './redux/store'
 import Reg_doctor from './components/Login/doctorReg';
 import HomePage from './components/Home/Home';
+import Add_patient from './components/Patient/patient';
+import DocHomePage from './components/DoctorHomePage/DocHomeScreen';
+import Prescription from './components/Prescription/PrescriptionHomeScreen';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={Store}>
   <React.StrictMode>
     <Router>
-      {/* <App/> */}
         <Routes>
-          {/* <Route exact path="/" element={<Login/>} /> */}
-            <Route exact path="/" element={<App/>} />
+            <Route exact path="/login_register" element={<App/>} />
             <Route exact path="/loginform" element={<LoginForm/>} />
             <Route exact path="/login" element={<Login/>} />
             <Route exact path="/registerform" element={<RegisterForm/>} />
             <Route exact path="/doctor-registration" element={<Reg_doctor/>} />
-            <Route exact path= "/home" element= {<HomePage/>} />
-
-              {/* <Route path="/sign-up" element={<SignUp/>} /> */}
+            <Route exact path= "/" element= {<HomePage/>} />
+            <Route exact path= "/patientinfo" element= {<Add_patient/>} />
+            <Route exact path= "/doctorhome" element= {<DocHomePage/>}/>
+            <Route exact path= "/createRx" element = {<Prescription/>}/>
         </Routes>
       </Router>
   </React.StrictMode>
