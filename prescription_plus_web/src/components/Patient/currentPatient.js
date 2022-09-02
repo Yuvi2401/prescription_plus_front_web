@@ -2,34 +2,56 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Provider, useSelector } from 'react-redux';
 import { Store } from '../../redux/store';
+import { Link } from 'react-router-dom';
 
 function CurrentPatient() {
     const Rx = useSelector(state=>state.RxReducer);
     let Rxpatient = [{}]
-    Rxpatient = Rx.patient;
-    if(Rxpatient){
-        var name = Rxpatient.firstname+Rxpatient.lastname;
+    var name = "Patient Info not found"
+    var age = '22'
+    var sex = ''
+    var mobile = ''
+    var isPatientAvailable = false
+    var button_text = "Add patient info"
+    // boolean isPatientAvailable = false
+    console.log(name)
+    if(Rx.patient && Rx.patient.length>0){
+        Rxpatient = Rx.patient;
+        console.log(Rxpatient)
+        name = Rxpatient.firstname+Rxpatient.lastname;
+        button_text = "update patient info"
+        isPatientAvailable=true
+
     }
-    else{
-        var name = "Patient Info not found - Please add patient info"
-    }
+    console.log(Rx.patient)
+   
+    
   return (
-    <>
-    hellp
-    </>
-    // <Provider store = {Store}>
-    // <Card style={{ width: '18rem' }}>
-    //   <Card.Img variant="top" src="holder.js/100px180" />
-    //   <Card.Body>
-    //     <Card.Title>Hello</Card.Title>
-    //     <Card.Text>
-    //       Some quick example text to build on the card title and make up the
-    //       bulk of the card's content.
-    //     </Card.Text>
-    //     <Button variant="primary">Go somewhere</Button>
-    //   </Card.Body>
-    // </Card>
-    // </Provider>
+    // <>
+    // hello
+    // </>
+    <Provider store = {Store}>
+        <div className='top-centered-div'>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src="profile.png" />
+      <Card.Body>
+        <Card.Title>{isPatientAvailable ? name: "Patient info not found"}</Card.Title>
+        <Card.Text>
+        <p> {isPatientAvailable? "Age: "+age:""}</p>
+          <p>{isPatientAvailable? "Sex: "+sex:""}</p>
+          <p>{isPatientAvailable? "Contact: "+mobile:""}</p>
+          
+         
+
+
+        </Card.Text>
+        <Link className="nav-link" to={'/patientinfo'}>
+        <Button variant="primary">{button_text}</Button>
+        </Link>
+      </Card.Body>
+    </Card>
+    </div>
+    </Provider>
   );
 }
 
