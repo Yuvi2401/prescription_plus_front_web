@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { useState, createContext } from "react";
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import {Button,Tabs,Tab} from 'react-bootstrap'
 import Split from "react-split";
 import Medicines from "./Medicines/Medicines";
@@ -12,22 +12,24 @@ import RxViewer from "../RxViewer/viewer_cntrl";
 import RxViewerNav from "./RxViewerNav";
 import "../../App.css"
 import NavBar from "../NavBar/DoctorNavBar";
+import RxScreen from "./Rx Screen/Rx";
 
 
-
-const Prescription =()=>  {
-    
+const Prescription = props =>  {
+    const [key, setKey] = useState('home');
+    console.log(key)
     return (
         <div className="App">
-        <NavBar/>
+            <NavBar/>
         <Split className="split" >
             <div>
                 <Tabs
-                    defaultActiveKey="home"
-                    className="mb-3"
+                   activeKey={key}
+                   onSelect={(k) => setKey(k)}
+                   className="mb-3"
                     >
-                    <Tab eventKey="home" title="Home">
-                    Hello EveryOne!! 
+                    <Tab eventKey="home" title="Preview Prescription" >
+                        <RxScreen setKey={setKey}/>
                     </Tab>
                     <Tab eventKey="medicine" title="Medicines">
                         <Medicines/>
