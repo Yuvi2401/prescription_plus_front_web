@@ -8,6 +8,7 @@ import { server_url } from '../../config'
 import { Form, Card, Button, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import InputGroup from 'react-bootstrap/InputGroup';
+import { useEffect } from "react";
 
 
 
@@ -30,71 +31,81 @@ export default function Add_patient(){
   const [addresspincode,SetAddresspincode] = useState()
   const [addresscity,SetAddresscity] = useState()
   const [addressstate,SetAddressstate] = useState()
-  var isstateset = false;
+  const [flag,setflag]= useState(false)
+  // console.log(Rxpatient)
+  useEffect(()=>{
+    if (Rxpatient){
+      // console.log(Rxpatient)
+      setFirstname(Rxpatient.firstname)
+      setLastname(Rxpatient.lastname)
+      setMobile(Rxpatient.mobile)
+      setEmail(Rxpatient.email)
+      setSex(Rxpatient.sex)
+      setAge(Rxpatient.age)
+      setUniqueHealthId(Rxpatient.uniqueHealthId)
+    }
+    const Setpatient = async()=>{
+      // console.log("---first---",firstname)
+     dispatch(setPatient({mobile:mobile, 
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        whatsapp: '',
+        uniqueHealthId:uniqueHealthId,
+        sex: sex,
+        age: age,
+        addresscity: '',
+        addresslocality: '',
+        addresspincode: '',
+        addressstate: ''}));
+      console.log("aya")
+      // setflag(true)
+    const options = {
+      url: server_url+'/patient/addPatient',
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;'
+      },
+      data:{
+            firstname,
+            lastname,
+            email,
+            mobile,
+            whatsapp,
+            uniqueHealthId,
+            sex,
+            age,
+            "address":{
+                "locality":'',
+                "pincode":0,
+                "city":'',
+                "state":''
+            }
+        }
+      };
+      // console.log(options.data)
+      await axios(options)
+      .then(response => {
+          console.log(response.status)
+          
+      })
+      .catch(err => {
+        console.log(err.response);
+      //   Alert.alert("Imcomplete entry",  "Kindly enter atleast patient's name and phone number")
+      })    
+    }
+  
 
-  if (Rxpatient && !isstateset){
-    console.log(Rxpatient)
-    // setFirstname(Rxpatient.firstname)
-    // setLastname(Rxpatient.lastname)
-    // setMobile(Rxpatient.mobile)
-    // setEmail(Rxpatient.email)
-    // setSex(Rxpatient.sex)
-    // setUniqueHealthId(Rxpatient.uniqueHealthId)
-    // isstateset=true
+    if(flag){
+      setflag(false)
+      Setpatient()
+    }
+  },[flag]);
+
+  const setpatient = () =>{
+    setflag(true)
   }
-
-  const setpatient = async()=>{
-    console.log("aya")
-   dispatch(setPatient({mobile:mobile, 
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      whatsapp: '',
-      uniqueHealthId:uniqueHealthId,
-      sex: sex,
-      age: age,
-      addresscity: '',
-      addresslocality: '',
-      addresspincode: '',
-      addressstate: ''}));
-    console.log("aya")
-  const options = {
-    url: server_url+'/patient/addPatient',
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json;'
-    },
-    data:{
-          firstname,
-          lastname,
-          email,
-          mobile,
-          whatsapp,
-          uniqueHealthId,
-          sex,
-          age,
-          "address":{
-              "locality":'',
-              "pincode":0,
-              "city":'',
-              "state":''
-          }
-      }
-    };
-    console.log(options.data)
-    await axios(options)
-    .then(response => {
-        console.log(response.status)
-        
-    })
-    .catch(err => {
-      console.log(err.response);
-    //   Alert.alert("Imcomplete entry",  "Kindly enter atleast patient's name and phone number")
-    })    
-  }
-
-
 
   return(
     <div className='centered-div'>
@@ -172,11 +183,11 @@ export default function Add_patient(){
         </Form.Text> */}
       </Form.Group>
       </Row>
-      {/* <Link className="nav-link" to={'/createRx'}> */}
+      <Link className="nav-link" to={'/createRx'}>
       <Button variant="primary" onClick={()=>setpatient()}>
         Add Patient
       </Button>
-      {/* </Link> */}
+      </Link>
       
     </Form>
     </Card.Body>

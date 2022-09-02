@@ -3,28 +3,42 @@ import Card from 'react-bootstrap/Card';
 import { Provider, useSelector } from 'react-redux';
 import { Store } from '../../redux/store';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 function CurrentPatient() {
     const Rx = useSelector(state=>state.RxReducer);
     let Rxpatient = [{}]
-    var name = "Patient Info not found"
-    var age = '22'
-    var sex = ''
-    var mobile = ''
-    var isPatientAvailable = true
-    var button_text = "Add patient info"
-    // boolean isPatientAvailable = false
-    console.log(name)
-    if(Rx.patient && Rx.patient.length>0){
-        Rxpatient = Rx.patient;
-        console.log(Rxpatient)
-        name = Rxpatient.firstname+Rxpatient.lastname;
-        button_text = "update patient info"
-        isPatientAvailable=true
+    const [name, setName] = useState('Patient info not found');
+    const [age, setAge] = useState('didnt set the value');
+    const [sex, setSex] = useState('');
+    const [mobile, setMobile] = useState('');
+    const [isPatientAvailable, setIsPatientAvailable] = useState(false);
+    const [button_text, setButton_text] = useState("Add patient info")
+    const [flag, setFlag] = useState(false)
+    // console.log("--------------Rx patient---------", Rx.patient)
 
+    if(Rx.patient && !isPatientAvailable){
+        setFlag(true);
+        setIsPatientAvailable(true)
+        console.log("falg set to true")
     }
-    console.log(Rx.patient)
-   
+    useEffect(()=>{
+      const setVars=()=>{
+        Rxpatient = Rx.patient;
+        setFlag(false)
+        console.log("--------------Rxpatient---------",Rxpatient.age)
+        setName(Rxpatient.firstname+" "+Rxpatient.lastname)
+        setAge('22')
+        setSex(Rxpatient.sex)
+        setMobile(Rxpatient.mobile)
+        setButton_text("Update patient info")
+        console.log(age)
+      }
+      if(flag){
+        setVars()
+      }
+    },[flag]);
     
   return (
     // <>
@@ -36,17 +50,11 @@ function CurrentPatient() {
       <Card.Img variant="top" src="profile.png" />
       <Card.Body>
         <Card.Title>{isPatientAvailable ? name: "Patient info not found"}</Card.Title>
-        <Card.Text>
-        <p> {isPatientAvailable? "Age: "+age:""}</p>
-          <p>{isPatientAvailable? "Sex: "+sex:""}</p>
-          <p>{isPatientAvailable? "Contact: "+mobile:""}</p>
-          
-         
-
-
-        </Card.Text>
+        <Card.Text>{isPatientAvailable? "Age: "+age:""}</Card.Text>
+        <Card.Text>{isPatientAvailable? "Sex: "+sex:""}</Card.Text>
+          <Card.Text>{isPatientAvailable? "Contact: "+mobile:""}</Card.Text>
         <Link className="nav-link" to={'/patientinfo'}>
-        <Button variant="primary">{button_text}</Button>
+        <Button variant="primary" onClick={()=>setFlag(true)}>{button_text}</Button>
         </Link>
       </Card.Body>
     </Card>
