@@ -11,7 +11,7 @@ function CurrentPatient() {
     var age = '22'
     var sex = ''
     var mobile = ''
-    var isPatientAvailable = false
+    var isPatientAvailable = true
     var button_text = "Add patient info"
     // boolean isPatientAvailable = false
     console.log(name)

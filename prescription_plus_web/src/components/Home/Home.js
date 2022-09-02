@@ -1,10 +1,11 @@
+import NavBar from '../NavBar/HomeNavBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
-import Prescription from '../Prescription/PrescriptionHomeScreen'
 
 const HomePage = () =>{
   return (
     <div className='App'>
-      <Prescription/>
+      <NavBar/>
     </div>
   );
 }

@@ -30,15 +30,17 @@ export default function Add_patient(){
   const [addresspincode,SetAddresspincode] = useState()
   const [addresscity,SetAddresscity] = useState()
   const [addressstate,SetAddressstate] = useState()
+  var isstateset = false;
 
-  if (Rxpatient){
-    // console.log(Rxpatient.firstname)
+  if (Rxpatient && !isstateset){
+    console.log(Rxpatient)
     // setFirstname(Rxpatient.firstname)
     // setLastname(Rxpatient.lastname)
     // setMobile(Rxpatient.mobile)
     // setEmail(Rxpatient.email)
     // setSex(Rxpatient.sex)
     // setUniqueHealthId(Rxpatient.uniqueHealthId)
+    // isstateset=true
   }
 
   const setpatient = async()=>{
@@ -84,6 +86,7 @@ export default function Add_patient(){
     await axios(options)
     .then(response => {
         console.log(response.status)
+        
     })
     .catch(err => {
       console.log(err.response);
@@ -169,11 +172,11 @@ export default function Add_patient(){
         </Form.Text> */}
       </Form.Group>
       </Row>
-      <Link className="nav-link" to={'/home'}>
+      {/* <Link className="nav-link" to={'/createRx'}> */}
       <Button variant="primary" onClick={()=>setpatient()}>
         Add Patient
       </Button>
-      </Link>
+      {/* </Link> */}
       
     </Form>
     </Card.Body>
