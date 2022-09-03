@@ -10,15 +10,15 @@ function CurrentPatient() {
     const Rx = useSelector(state=>state.RxReducer);
     let Rxpatient = [{}]
     const [name, setName] = useState('Patient info not found');
-    const [age, setAge] = useState('didnt set the value');
+    const [age, setAge] = useState('');
     const [sex, setSex] = useState('');
     const [mobile, setMobile] = useState('');
     const [isPatientAvailable, setIsPatientAvailable] = useState(false);
     const [button_text, setButton_text] = useState("Add patient info")
     const [flag, setFlag] = useState(false)
-    // console.log("--------------Rx patient---------", Rx.patient)
+    console.log("--------------Rx patient---------", Object.keys(Rx.patient).length, isPatientAvailable)
 
-    if(Rx.patient && !isPatientAvailable){
+    if(Object.keys(Rx.patient).length !== 0 && !isPatientAvailable){
         setFlag(true);
         setIsPatientAvailable(true)
         console.log("falg set to true")
@@ -29,7 +29,7 @@ function CurrentPatient() {
         setFlag(false)
         console.log("--------------Rxpatient---------",Rxpatient.age)
         setName(Rxpatient.firstname+" "+Rxpatient.lastname)
-        setAge('22')
+        setAge(Rxpatient.age)
         setSex(Rxpatient.sex)
         setMobile(Rxpatient.mobile)
         setButton_text("Update patient info")

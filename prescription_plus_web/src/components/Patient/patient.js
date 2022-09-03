@@ -6,15 +6,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { setPatient,removePatient, updateDoctor} from "../../redux/actions";
 import { server_url } from '../../config'
 import { Form, Card, Button, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import InputGroup from 'react-bootstrap/InputGroup';
+import { Link, useNavigate} from "react-router-dom";
 import { useEffect } from "react";
 
 
 
 
 export default function Add_patient(){
-
+  const navigate = useNavigate()
   const Rx = useSelector(state=>state.RxReducer);
   let Rxpatient = [{}]
   Rxpatient = Rx.patient;
@@ -35,7 +34,7 @@ export default function Add_patient(){
   // console.log(Rxpatient)
   useEffect(()=>{
     if (Rxpatient){
-      // console.log(Rxpatient)
+      console.log(Rxpatient)
       setFirstname(Rxpatient.firstname)
       setLastname(Rxpatient.lastname)
       setMobile(Rxpatient.mobile)
@@ -45,7 +44,7 @@ export default function Add_patient(){
       setUniqueHealthId(Rxpatient.uniqueHealthId)
     }
     const Setpatient = async()=>{
-      // console.log("---first---",firstname)
+      console.log("---first---",firstname)
      dispatch(setPatient({mobile:mobile, 
         firstname: firstname,
         lastname: lastname,
@@ -88,6 +87,7 @@ export default function Add_patient(){
       await axios(options)
       .then(response => {
           console.log(response.status)
+          navigate("/createRx")
           
       })
       .catch(err => {
@@ -183,11 +183,11 @@ export default function Add_patient(){
         </Form.Text> */}
       </Form.Group>
       </Row>
-      <Link className="nav-link" to={'/createRx'}>
+      {/* <Link className="nav-link" to={'/createRx'}> */}
       <Button variant="primary" onClick={()=>setpatient()}>
         Add Patient
       </Button>
-      </Link>
+      {/* </Link> */}
       
     </Form>
     </Card.Body>
