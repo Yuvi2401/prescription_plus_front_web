@@ -14,10 +14,10 @@ const Medicines = () =>{
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState(false);
-  const [dosage, setDosage] = useState("")
-  const [duration, setDuration] = useState("")
-  const [durationtype,setDurationType] = useState("")
-  const [when,setWhen] = useState("")
+  const [dosage, setDosage] = useState("1-1-1")
+  const [duration, setDuration] = useState("1")
+  const [durationtype,setDurationType] = useState("Days")
+  const [when,setWhen] = useState("After Food")
   const [advice,setAdvice]= useState("")
   const [quantity,setQuantity] = useState("")
 
@@ -162,9 +162,12 @@ const Medicines = () =>{
       <br />
        <>
           <Collapse in={open}>
+        <div className="centered-div-auto">
+        <Card style={{ width: 'auto', flex: 'top' }}>
+        <Card.Body>
          <Form>
             <Form.Group className="mb-3" controlId="formGridMedicine">
-              <Form.Label>Medicines</Form.Label>
+              <Form.Label><h3>Medicines</h3></Form.Label>
               <InputGroup.Text>{med.value}</InputGroup.Text>
             </Form.Group> 
           <Form.Group className="mb-3" controlId="formGridDosage">
@@ -231,6 +234,9 @@ const Medicines = () =>{
             Submit
           </Button>
           </Form>  
+          </Card.Body>
+          </Card>
+          </div>
           </Collapse>
      </>
     </div>

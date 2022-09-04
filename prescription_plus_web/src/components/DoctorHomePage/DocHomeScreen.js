@@ -8,9 +8,11 @@ const DocHomePage = () =>{
   return (
     <div className='App'>
         <NavBar/>
+        
         <Button href="/createRx" variant="secondary" size="lg" active>
             Create Prescription
         </Button>
+      
     </div>
   );
 }

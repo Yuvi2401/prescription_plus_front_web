@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setComplaints, removeComplaints, updateComplaints } from "../../../redux/actions";
-import {Button,Col,Form,Row,ListGroup,Collapse,InputGroup,ButtonGroup,Card} from 'react-bootstrap';
+import {Button,Col,Form,Row,ListGroup,Collapse,InputGroup,ButtonGroup,Card, Dropdown, DropdownButton} from 'react-bootstrap';
 import {server_url} from "../../../config";
 
 const Complaints = () =>{
@@ -11,11 +11,11 @@ const Complaints = () =>{
     const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState(false);
-    const [severity, setSeverity] = useState("");
+    const [severity, setSeverity] = useState("MILD");
     const [complaint,setComplaint] = useState([]);
     const [open, setOpen] = useState(false);
-    const [duration, setDuration] = useState("");
-    const [durationtype,setDurationType] = useState("")
+    const [duration, setDuration] = useState("1");
+    const [durationtype,setDurationType] = useState("Days")
     const [advice,setAdvice]= useState("");
     const Rx = useSelector(state=>state.RxReducer);
 
@@ -55,7 +55,7 @@ const Complaints = () =>{
         setLoading(false);
         };
         if (query.length > 2) fetchSymptoms();
-        if(query.length < 0)setSymptoms([])
+        if(query.length <= 0)setSymptoms([])
     }, [query]);
 
     const onPressHandler = (key,value) =>{
@@ -89,10 +89,12 @@ const Complaints = () =>{
         console.log(comp)
         setDurationType("")
         setAdvice("")
+        setSeverity("")
         setDuration("")
         setComplaint([])
         setOpen(!open)
         setSearch(!search)
+        setSymptoms([])
     }
       
     return (
@@ -128,15 +130,16 @@ const Complaints = () =>{
       <br />
        <>
         <Collapse in={open}>
+          <div className="centered-div-auto">
+        <Card style={{ width: 'auto', flex: 'top' }}>
+        <Card.Body>
          <Form>
             <Form.Group className="mb-3" controlId="formGridSymptom">
               <Form.Label><h3>Symptoms</h3></Form.Label>
-              <InputGroup.Text>{complaint.value}</InputGroup.Text>
+              <InputGroup.Text>{complaint.term}</InputGroup.Text>
             </Form.Group> 
             <Form.Group className="mb-3" controlId="formGridSeverity">
-                <Form.Label><h3>Severity</h3></Form.Label>
-                <Button className="mb-1" variant="outline-dark">{severity}</Button>
-                <br />
+                <Col><Form.Label><h3>Severity: {severity}</h3></Form.Label></Col>
                 <ButtonGroup className="mb-3">
                     {Severity.map((val) => (
                     <Button variant="secondary" onClick={()=>setSeverity(val.name)}>
@@ -172,6 +175,9 @@ const Complaints = () =>{
             Submit
           </Button>
           </Form>  
+          </Card.Body>
+          </Card>
+          </div>
           </Collapse>
      </>
       </div>

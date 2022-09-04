@@ -56,7 +56,8 @@ export default function Add_patient(){
         addresscity: '',
         addresslocality: '',
         addresspincode: '',
-        addressstate: ''}));
+        addressstate: '',
+        isAdded: true}));
       console.log("aya")
       // setflag(true)
     const options = {
@@ -87,7 +88,8 @@ export default function Add_patient(){
       await axios(options)
       .then(response => {
           console.log(response.status)
-          navigate("/createRx")
+          // navigate("/createRx")
+    
           
       })
       .catch(err => {

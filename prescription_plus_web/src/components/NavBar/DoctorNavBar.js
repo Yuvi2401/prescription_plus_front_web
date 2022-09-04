@@ -11,7 +11,7 @@ const NavBar = () =>{
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link href="#features">FLipkart Health Plus</Nav.Link>
+        <Nav.Link href="https://healthplus.flipkart.com/" target="_blank">FLipkart Health Plus</Nav.Link>
           <Nav.Link href="#pricing">Profile</Nav.Link>
         </Nav>
         <p className="text-center mt-4 mb-4" />

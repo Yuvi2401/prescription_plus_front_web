@@ -42,7 +42,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
+}
+
+.centered-div-auto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
 }
 
 .top-centered-div {

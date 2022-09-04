@@ -22,6 +22,9 @@ const Additionalinfo = () =>{
         setDate('')
     }
     return (
+        <div className="centered-div-auto">
+        <Card style={{ width: 'auto', flex: 'top' }}>
+        <Card.Body>
         <Form>
         <Form.Group className="mb-3" controlId="formGridAdditionalInfo">
             <Form.Label><h3>Advice</h3></Form.Label>
@@ -39,6 +42,9 @@ const Additionalinfo = () =>{
             Submit
           </Button>
           </Form>
+          </Card.Body>
+          </Card>
+          </div>
     )
 
 }

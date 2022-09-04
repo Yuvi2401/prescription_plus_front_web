@@ -31,11 +31,11 @@ const Prescription = props =>  {
                     <Tab eventKey="home" title="Preview Prescription" >
                         <RxScreen setKey={setKey}/>
                     </Tab>
-                    <Tab eventKey="medicine" title="Medicines">
-                        <Medicines/>
-                    </Tab>
                     <Tab eventKey="complaints" title="Complaints">
                         <Complaints/>
+                    </Tab>
+                    <Tab eventKey="medicine" title="Medicines">
+                        <Medicines/>
                     </Tab>
                     <Tab eventKey="labtest" title="Lab Tests">
                         <LabTest/>
