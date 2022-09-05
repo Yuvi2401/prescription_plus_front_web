@@ -17,7 +17,7 @@ const RxViewerNav =()=>  {
         <div>
             <Tabs
                 defaultActiveKey="Patient Info"
-                className="mb-3"
+                className="cTabs"
                 >
                 <Tab eventKey="Patient Info" title="Patient Info">
                     <CurrentPatient/>

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: "Nunito", Courier, monospace;
 }
 
 .App-logo {
@@ -58,3 +59,572 @@
   justify-content: center;
   height: 80vh;
 }
+
+.split {
+  min-height: calc(100vh - 66px);
+}
+
+/* ---------------------------NAVBAR--------------------------- */
+.topnav {
+  position: relative;
+  /* top: 0;
+  left: 0; */
+  width: 100%;
+  height: 4.4rem;
+  background-color: white;
+  border-bottom: 1px solid hsl(0, 0%, 85%);
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+/*-----LOGO-----*/
+.topnav .logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: green;
+  font-family: "Qwitcher Grypen", cursive;
+}
+.topnav .logo:hover {
+  cursor: pointer;
+}
+.topnav .logo-icon {
+  width: 34px;
+  height: 34px;
+}
+.topnav .logo-text {
+  font-size: 28px;
+  font-weight: bold;
+}
+/*-----SEARCH-----*/
+.topnav .search {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+  font-size: 14px;
+  background-color: hsl(0, 0%, 95%);
+  padding: 10px 100px;
+  border-radius: 5px;
+}
+/*-----RIGHT BUTTONS-----*/
+.topnav .right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.topnav .right-textItem {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.topnav .right-textItem:hover {
+  cursor: pointer;
+}
+/* ---------------------------NAVBAR-end--------------------------- */
+
+/* ---------------------------FLOATING-BTN-CREATE--------------------------- */
+.btn-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background-color: hsl(120, 50%, 47%);
+}
+.btn-float .icon {
+  color: white;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+.btn-float::before {
+  content: "Create Prescription";
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 10px);
+  transform: translate(200%, -50%);
+  color: black;
+  width: max-content;
+  opacity: 0;
+  background-color: hsl(0, 0%, 95%);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: opacity 0.15s ease;
+}
+.btn-float:hover::before {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+/* ---------------------------FLOATING-BTN-CREATE-END--------------------------- */
+
+/* ---------------------------PATIENT INFO CARD--------------------------- */
+.cCard {
+  font-family: "Nunito", Courier, monospace;
+  width: 400px;
+  height: max-content;
+  min-height: 100px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  padding: 30px;
+  background-color: white;
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+}
+.cCard .settings {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: hsl(0, 0%, 60%);
+  width: 30px;
+  height: 30px;
+  transition: all 0.5s ease;
+}
+.cCard .settings:hover {
+  cursor: pointer;
+  color: green;
+  transform: rotateZ(180deg) scale(1.1);
+}
+.cCard .profilePic {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+.cCard .nameSection-name {
+  font-size: 24px;
+  font-weight: 600;
+}
+.cCard .nameSection-lastCheck {
+  font-size: 14px;
+  color: hsl(0, 0%, 50%);
+}
+.cCard .extraInfoSection-item {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+.cCard .extraInfoSection-item-label {
+  color: hsl(0, 0%, 50%);
+}
+.cCard .extraInfoSection-item-value {
+  text-align: left;
+  width: 120px;
+}
+/* ---------------------------PATIENT INFO CARD-END--------------------------- */
+
+/* ---------------------------LEFT PANEL MEDICINES--------------------------- */
+.leftPanel {
+  width: 100%;
+  height: calc(100vh - 4.4rem - 42px);
+  overflow-y: auto;
+  padding: 40px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.medsContainer {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 30px;
+}
+.medsContainer .search {
+  margin-top: 30px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.medsContainer .search-inputSec {
+  width: 100%;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+}
+.medsContainer .search-inputSec-icon {
+  width: 20px;
+  height: 20px;
+  color: hsl(0, 0%, 60%);
+}
+.medsContainer .search-inputSec-text {
+  width: calc(100% - 20px);
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  font-size: 18px;
+}
+.medsContainer .search-resultSec {
+  list-style: none;
+  text-align: left;
+  padding: 0 20px 10px 20px;
+  margin-bottom: 0;
+}
+.medsContainer .search-resultSec-item {
+  font-size: 18px;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+.medsContainer .search-resultSec-item:hover {
+  cursor: pointer;
+  background-color: hsl(0, 0%, 97%);
+}
+.medsContainer .search-loadingSec {
+  width: 100%;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  padding-bottom: 20px;
+}
+.medsContainer .noMeds {
+  margin: 50px 0;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+.medsContainer .noMeds-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: hsl(120, 50%, 87%);
+  display: grid;
+  place-items: center;
+  box-shadow: rgba(21, 130, 36, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.medsContainer .noMeds-icon > * {
+  width: 50px;
+  height: 50px;
+  color: hsl(120, 50%, 57%);
+}
+.medsContainer .noMeds-heading {
+  font-size: 30px;
+  font-weight: bold;
+}
+.medsContainer .assignedMeds {
+  margin: 20px 0;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 15px 20px;
+}
+.medsContainer .assignedMeds-title {
+  /* font-size: 20px; */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.medsContainer .assignedMeds-list {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+.medsContainer .assignedMeds-list-item {
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.medsContainer .assignedMeds-list-item .head {
+  background-color: hsl(120, 50%, 97%);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.medsContainer .assignedMeds-list-item .head-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: hsl(120, 50%, 27%);
+}
+.medsContainer .assignedMeds-list-item .head-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.medsContainer .assignedMeds-list-item .head-icons > * {
+  transition: all 0.15s ease;
+}
+.medsContainer .assignedMeds-list-item .head-icons > *:hover {
+  cursor: pointer;
+  color: hsl(120, 50%, 27%);
+  transform: scale(1.2);
+}
+.medsContainer .assignedMeds-list-item .details {
+  padding: 20px 10px 10px 10px;
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+}
+.medsContainer .assignedMeds-list-item .details-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: space-around;
+  row-gap: 20px;
+}
+.medsContainer .assignedMeds-list-item .details-stats-item {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.medsContainer .assignedMeds-list-item .details-stats-item .heading {
+  font-size: 24px;
+  /* font-weight: bold; */
+}
+.medsContainer .assignedMeds-list-item .details-stats-item .subHeading {
+  font-size: 14px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.medsContainer .assignedMeds-list-item .details-advice {
+  text-align: center;
+  color: hsl(120, 69%, 36%);
+}
+.medsEditSec {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 700px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 30px 50px;
+}
+.medsEditSec-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.medsEditSec-infoContainer {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+}
+.medsEditSec-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.medsEditSec-info-label {
+  width: 100px;
+  text-align: left;
+}
+.medsEditSec-info-input {
+  width: calc(100% - 110px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.medsEditSec-info-input .custom-input {
+  height: 30px;
+  border: none;
+  outline: none;
+  background-color: hsl(0, 0%, 95%);
+  border-radius: 4px;
+  padding: 7px 5px;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+.medsEditSec-info-input .custom-input:focus {
+  /* border: 2px solid hsl(0, 0%, 60%); */
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
+}
+.medsEditSec-info-input .custom-input:focus::placeholder {
+  color: transparent;
+}
+.medsEditSec-info-input .custom-input-number {
+  width: 80px;
+}
+.medsEditSec-info-input .custom-select {
+  width: 100%;
+  height: 30px;
+  outline: none;
+  border: none;
+  background-color: hsl(0, 0%, 95%);
+  border-radius: 4px;
+  padding: 0 10px;
+}
+.medsEditSec-info-input .custom-select-small {
+  width: calc(100% - 100px);
+}
+.medsEditSec-info-input-textarea {
+  width: 100%;
+}
+.medsEditSec-info-input-textarea textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-color: hsl(0, 0%, 95%);
+  transition: all 0.2s ease;
+}
+.medsEditSec-info-input-textarea textarea:focus {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
+}
+.medsEditSec-actions {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.medsEditSec-actions .button {
+  width: calc(50% - 10px);
+  display: grid;
+  place-items: center;
+  background-color: hsl(0, 0%, 50%);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 300;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.medsEditSec-actions .button:hover {
+  cursor: pointer;
+}
+.medsEditSec-actions .button-submit:hover {
+  color: hsl(120, 50%, 27%);
+  border: 2px solid hsl(120, 50%, 27%);
+  background-color: white;
+}
+.medsEditSec-actions .button-cancel:hover {
+  color: hsl(0, 79%, 44%);
+  border: 2px solid hsl(0, 72%, 43%);
+  background-color: white;
+}
+/* ---------------------------LEFT PANEL MEDICINES-END--------------------------- */
+
+/*----------------External components and classes altered----------------*/
+.split > * {
+  background-color: hsl(0, 0%, 97%);
+}
+.cTabs {
+  font-family: "Nunito", Courier, monospace;
+  background-color: white;
+}
+.cTabs .nav-link {
+  color: green;
+  font-weight: bold;
+}
+.cTabs .nav-tabs .nav-link {
+  border-radius: none;
+}
+.cTabs .active {
+  background-color: hsl(0, 0%, 97%) !important;
+}
+.gutter {
+  background-color: hsl(0, 0%, 85%) !important;
+}
+.navLink {
+  text-decoration: none;
+}
+
+/* ---------------------------LOADING SPINNER--------------------------- */
+.lds-spinner {
+  color: official;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform: scale(0.7);
+}
+.lds-spinner div {
+  transform-origin: 40px 40px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+.lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  width: 5px;
+  height: 16px;
+  border-radius: 20%;
+  background-color: hsl(0, 0%, 30%);
+}
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -1.1s;
+}
+.lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -1s;
+}
+.lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.9s;
+}
+.lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.8s;
+}
+.lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.7s;
+}
+.lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.6s;
+}
+.lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.5s;
+}
+.lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.4s;
+}
+.lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.3s;
+}
+.lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.2s;
+}
+.lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.1s;
+}
+.lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+}
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* ---------------------------LOADING SPINNER - END--------------------------- */
