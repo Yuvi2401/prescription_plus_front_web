@@ -225,6 +225,51 @@
   text-align: left;
   width: 120px;
 }
+/* ----PAtient info not found---- */
+.noData {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  align-items: center;
+}
+.noData .noData-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: hsl(0, 0%, 87%);
+  display: grid;
+  place-items: center;
+  box-shadow: rgba(21, 130, 36, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.noData .noData-icon > * {
+  width: 50px;
+  height: 50px;
+  color: hsl(0, 0%, 47%);
+}
+.noData .noData-text {
+  font-size: 16px;
+}
+.noData .button {
+  width: 150px;
+  display: grid;
+  place-items: center;
+  background-color: hsl(0, 0%, 50%);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  /* font-weight: 300; */
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.noData .button:hover {
+  cursor: pointer;
+}
+.noData .button-submit:hover {
+  color: hsl(120, 50%, 27%);
+  border: 2px solid hsl(120, 50%, 27%);
+  background-color: white;
+}
 /* ---------------------------PATIENT INFO CARD-END--------------------------- */
 
 /* ---------------------------LEFT PANEL MEDICINES--------------------------- */
