@@ -101,7 +101,7 @@ const Medicines = () => {
   useEffect(() => {
     const fetchMedicine = async () => {
       setLoading(true);
-      /*const url = `${server_url}/search/medicine?data=${query}`
+      const url = `${server_url}/search/medicine?data=${query}`
       let res = await axios.get(url);
       console.log(res)
       res = res.data;
@@ -116,8 +116,8 @@ const Medicines = () => {
             value: val['Brand Name']});
     
           }
-      setPosts(medicine);*/
-      setPosts(testJson);
+      setPosts(medicine);
+      // setPosts(testJson);
       setLoading(false);
     };
     if (query.length > 2) fetchMedicine();

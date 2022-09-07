@@ -77,8 +77,8 @@ function RegisterForm() {
 
      
       <Button variant="primary" type="submit">
-      <Link className="nav-link" to={'/login'}>
-        Login
+      <Link className="nav-link" to={'/createRx'}>
+        Register
         </Link>
       </Button>
       

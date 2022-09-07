@@ -56,7 +56,7 @@ const Complaints = () =>{
     useEffect(() => {
     const fetchSymptoms = async () => {
         setLoading(true);
-        /*var url = `${server_url}/search/symptoms?data=${query}`
+        var url = `${server_url}/search/symptoms?data=${query}`
         let res = await axios.get(url);
         res = res.data;
         res = res.data;
@@ -69,8 +69,8 @@ const Complaints = () =>{
             value: val['Brand Name']});
             
         }
-        setSymptoms(symptomData)*/
-        setSymptoms(testJson);
+        setSymptoms(symptomData)
+        // setSymptoms(testJson);
         setLoading(false);
         };
         if (query.length > 2) fetchSymptoms();

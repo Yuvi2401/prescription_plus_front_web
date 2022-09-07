@@ -12,7 +12,7 @@ function LoginForm() {
   return (
  
     <div>
-    <Card style={{ width: '22rem' }}>
+    <Card style={{ width: '30rem' }}>
     <Card.Body>
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
