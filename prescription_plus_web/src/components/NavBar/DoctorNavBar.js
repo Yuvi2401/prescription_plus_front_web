@@ -4,23 +4,40 @@ import Navbar from "react-bootstrap/Navbar";
 import { Button, Form } from "react-bootstrap";
 import { FiSearch } from "react-icons/fi";
 import { DiJqueryLogo } from "react-icons/di";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
 
 const NavBar = () => {
+  // window.location.reload(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const logout = ()=>{
+    localStorage.clear()
+    sessionStorage.clear()
+    console.log(location.pathname)
+    navigate('/doctorhome')
+    window.location.reload(false)
+    
+    
+    
+  };
   return (
     <>
       <nav className="topnav">
         <NavLink to={`/`} className="logo navLink">
           <DiJqueryLogo className="logo-icon" />
-          <div className="logo-text">Doc+</div>
+          <div className="logo-text">Prescription+</div>
         </NavLink>
         <div className="search">
           <FiSearch className="search-icon" />
           <div className="search-text">Search Patient</div>
         </div>
         <div className="right">
+        <NavLink to={`https://healthplus.flipkart.com/`} target='blank'>
           <button className="right-textItem">Health+</button>
-          <button className="right-textItem right-logout">Logout</button>
+        </NavLink>
+        {/* <NavLink to={`/doctorhome`} > */}
+          <button className="right-textItem right-logout" onClick={()=>logout()}>Logout</button>
+          {/* </NavLink> */}
         </div>
       </nav>
       {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">

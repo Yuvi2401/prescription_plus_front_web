@@ -12,9 +12,9 @@ const Additionalinfo = () =>{
     const [foldate, setfolDate] = useState(Rx.followup=='' ? new Date().toDateString(): new Date(Rx.followup).toDateString())
     const [date,setDate] = useState('')
 
-    const summitPage = () =>{
+    const summitPage = async () =>{
         console.log(foldate)
-        dispatch(setAdvice(additionalinfo));
+        await dispatch(setAdvice(additionalinfo));
         dispatch(setFollowup(foldate));
     }
     if(date){

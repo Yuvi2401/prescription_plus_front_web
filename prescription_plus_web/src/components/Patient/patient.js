@@ -110,8 +110,8 @@ export default function Add_patient(){
   }
 
   return(
-    <div className='centered-div'>
-    <Card style={{ width: '36rem' }}>
+
+    <Card style={{ width: 'auto' }}>
     <Card.Body>
     <Form>
         
@@ -194,7 +194,7 @@ export default function Add_patient(){
     </Form>
     </Card.Body>
     </Card>
-    </div>
+
    
 )
 

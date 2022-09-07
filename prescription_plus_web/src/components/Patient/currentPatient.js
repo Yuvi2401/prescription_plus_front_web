@@ -67,7 +67,7 @@ function CurrentPatient() {
       setButton_text("Update patient info");
       console.log(
         Rx.patient.isAdded,
-        "--------------------agvsdb-------------"
+        "--------------------Patient Added-------------"
       );
       console.log(age);
       // if(Rx.patient.isAdded === true){
@@ -76,7 +76,7 @@ function CurrentPatient() {
       Rx.patient.isAdded = false;
 
       dispatch(setPatient(Rx.patient));
-      console.log("andar tpgh aye");
+      console.log("data set in redux");
       setIsPatientAvailable(false);
       setShow(false);
       setFlag(false);

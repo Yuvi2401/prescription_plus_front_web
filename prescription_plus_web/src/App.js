@@ -12,21 +12,10 @@ function App() {
   return (
    
     <>
-    <div>
-      <HomeNav/>
-    </div>
+   
     <div>
       <SignIn/>
     </div>
-    <div >
-      <Login/>
-    </div>
-
-      <div className="auth-wrapper">
-        <div className="auth-inner"> 
-        </div>
-      </div>
-      <HomePage/>
     </>
     
   );

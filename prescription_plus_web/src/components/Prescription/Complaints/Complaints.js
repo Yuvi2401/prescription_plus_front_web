@@ -92,8 +92,8 @@ const Complaints = () =>{
         dispatch(removeComplaints(k));
     } 
     
-    const AddComplaints = ()=>{
-        dispatch(setComplaints({
+    const AddComplaints = async ()=>{
+        await dispatch(setComplaints({
             sctid: complaint.key,
             term: complaint.term, 
             severity: severity,

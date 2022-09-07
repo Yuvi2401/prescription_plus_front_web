@@ -6,55 +6,51 @@ import { useSelector, useDispatch } from "react-redux";
 import { setDoctor,removeDoctor,updateDoctor} from "../../redux/actions";
 import { server_url } from '../../config'
 import { Form, Card, Button, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputGroup from 'react-bootstrap/InputGroup';
+import { useEffect } from "react";
 
 
 
 
-export default function RegisterDoctor({navigation}){
-
+export default function Reg_doctor({navigation}){
+  const navigate = useNavigate()
   const Rx = useSelector(state=>state.RxReducer);
   let Rxdoctor = [{}]
   Rxdoctor = Rx.doctor;
   const dispatch = useDispatch();
-  const [firstname, setFirstname] = useState()
-  const [lastname, setLastname] = useState()
-  const [mci,SetMci] = useState()
-  const [email,SetEmail] = useState()
-  const [mobile,SetMobile] = useState()
-  const [degree, SetDegree] = useState()
-  const [councilstate, SetCouncilstate] = useState()
-  const [councilid,SetCouncilid] = useState()
-  const [visitingCard,SetVisitingCard]= useState()
-  const [signature,SetSignature] = useState()
-  const [sex,SetSex] = useState()
-  const [age,SetAge] = useState()
-  const [documents,SetDocuments] = useState()
-  const [addresslocality,SetAddresslocality] = useState()
-  const [addresspincode,SetAddresspincode] = useState()
-  const [addresscity,SetAddresscity] = useState()
-  const [addressstate,SetAddressstate] = useState()
-
+  const [firstname, setFirstname] = useState('')
+  const [usertname, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [lastname, setLastname] = useState('')
+  const [mci,SetMci] = useState('')
+  const [email,SetEmail] = useState('')
+  const [mobile,SetMobile] = useState('')
+  const [degree, SetDegree] = useState('')
+  const [councilstate, SetCouncilstate] = useState('')
+  const [councilid,SetCouncilid] = useState('')
+  const [visitingCard,SetVisitingCard]= useState('')
+  const [signature,SetSignature] = useState('')
+  const [sex,SetSex] = useState('')
+  const [age,SetAge] = useState('0')
+  const [documents,SetDocuments] = useState('')
+  const [addresslocality,SetAddresslocality] = useState('')
+  const [addresspincode,SetAddresspincode] = useState('0')
+  const [addresscity,SetAddresscity] = useState('')
+  const [addressstate,SetAddressstate] = useState('')
+  const [flag, setFlag] = useState(false)
+  if(Object.keys(Rx.patient).length !== 0){
+    setFlag(true)
+  }
+  useEffect(()=>{
+    setFirstname(Rx.doctor.firstname)
+    setLastname(Rx.doctor.lastname)
+    SetEmail(Rx.doctor.email)
+    SetMobile(Rx.doctor.mobile)
+    SetMci(Rx.doctor.mci)
+  },[Rx.doctor])
   const setdoctor= async()=>{
-    dispatch(setDoctor({
-      mci:mci, 
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      mobile: mobile,
-      degree: degree,
-      councilstate: councilstate,
-      councilid: councilid,
-      visitingcard: visitingCard,
-      signature: signature,
-      sex: sex,
-      age: age,
-      documents: documents,
-      addresscity: addresscity,
-      addresslocality: addresslocality,
-      addresspincode: addresspincode,
-      addressstate: addressstate}));
+    
     const options = {
     url: server_url+'/doctor/addDoc',
     method: 'POST',
@@ -86,10 +82,31 @@ export default function RegisterDoctor({navigation}){
             }
         }
     };
+    console.log("****************************DATA*************************", options.data)
     await axios(options)
     .then(response => {
+      dispatch(setDoctor({
+        id: response.data.data._id,
+        mci:mci, 
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        mobile: mobile,
+        degree: degree,
+        councilstate: councilstate,
+        councilid: councilid,
+        visitingcard: visitingCard,
+        signature: signature,
+        sex: sex,
+        age: age,
+        documents: documents,
+        addresscity: addresscity,
+        addresslocality: addresslocality,
+        addresspincode: addresspincode,
+        addressstate: addressstate}));
         console.log(response.status)
-        navigation.navigate('main_screen');
+        console.log(response.data.data._id)
+        navigate('/doctorhome');
     })
     .catch(err => console.log(err.response))                                        
   }
@@ -97,13 +114,14 @@ export default function RegisterDoctor({navigation}){
 
 
     return(
-        <Card style={{ width: '22rem' }}>
+       
+        <Card style={{ width: '30rem'}}>
         <Card.Body>
         <Form>
             
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
-            <Form.Control type="username" placeholder="Enter username" onChange={(e)=>setFirstname(e.currentTarget.value)}/>
+            <Form.Control type="username" placeholder="Enter username" onChange={(e)=>setUsername(e.currentTarget.value)}/>
             {/* <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text> */}
@@ -111,23 +129,23 @@ export default function RegisterDoctor({navigation}){
     
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="password" placeholder="Password" onChange={(e)=>setPassword(e.currentTarget.value)}/>
           </Form.Group>
         
           <Row>
             <Col>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formBasicFirstName">
             <Form.Label>First name</Form.Label>
-            <Form.Control type="firstname" placeholder="First name" />
+            <Form.Control type="firstname" placeholder="First name" onChange={(e)=>setFirstname(e.currentTarget.value)}/>
             {/* <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text> */}
           </Form.Group>
           </Col>
           <Col>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formBasicLastName">
             <Form.Label>Last name</Form.Label>
-            <Form.Control type="lastname" placeholder="Last name" />
+            <Form.Control type="lastname" placeholder="Last name" onChange={(e)=>setLastname(e.currentTarget.value)}/>
             {/* <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text> */}
@@ -137,34 +155,45 @@ export default function RegisterDoctor({navigation}){
           <Row>
           <Col>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Mobile number</Form.Label>
-            <Form.Control type="mobile_number" placeholder="Mobile Number" />
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" placeholder="Email" onChange={(e)=>SetEmail(e.currentTarget.value)}/>
             {/* <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text> */}
           </Form.Group>
           </Col>
           <Col>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Email" />
+          <Form.Group className="mb-3" controlId="formBasicMobile">
+            <Form.Label>Mobile number</Form.Label>
+            <Form.Control type="mobile" placeholder="Mobile Number" onChange={(e)=>SetMobile(e.currentTarget.value)}/>
             {/* <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text> */}
           </Form.Group>
           </Col>
+          
+          <Row>
+          <Form.Group className="mb-3" controlId="formBasicMCI">
+            <Form.Label>MCI Number</Form.Label>
+            <Form.Control type="mci-number" placeholder="MCI number" onChange={(e)=>SetMci(e.currentTarget.value)}/>
+            {/* <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text> */}
+          </Form.Group>
+          </Row>
 
           </Row>
          
-          <Button variant="primary" type="submit">
-          <Link className="nav-link" to={'/login'}>
-            Login
-            </Link>
+          <Button variant="secondary" onClick={()=>setdoctor()}>
+          {/* <Link className="nav-link" to={'/doctorhome'}> */}
+            Register
+            {/* </Link> */}
           </Button>
           
         </Form>
         </Card.Body>
         </Card>
+ 
        
     )
     

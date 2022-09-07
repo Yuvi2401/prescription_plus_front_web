@@ -4,27 +4,32 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import LoginForm from './loginform';
 import RegisterForm from './registerform';
-import RegisterDoctor from './doctorReg';
-
+import Reg_doctor from './doctorReg';
+import { useState } from 'react';
 
 
 
 function SignIn() {
+  const [key, setKey] = useState('login')
   return (
-    <div className='centered-div'>
-    <Card style={{ width: '24rem' , height: 'auto' }}>
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100vh',
+    }}>
+    <Card style={{ width: 'auto' , height: 'auto' }}>
     <Card.Body>
     <Tabs
+      activeKey={key} onSelect={(k) => setKey(k)} className="cTabs"
       defaultActiveKey="login"
       id="fill-tab-example"
-      className="mb-3"
-      fill
     >
       <Tab eventKey="login" title="Login">
       <LoginForm/>
       </Tab>
       <Tab eventKey="register" title="Register">
-      <RegisterDoctor/>
+      <Reg_doctor/>
       </Tab>
       
     </Tabs>
