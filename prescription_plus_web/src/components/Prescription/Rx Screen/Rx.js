@@ -16,6 +16,7 @@ import { server_url } from "../../../config";
 const RxScreen = ({ setKey }) => {
   const dispatch = useDispatch()
   const Rx = useSelector(state=>state.RxReducer);
+  console.log(Rx)
   var Rxsymptoms = [];
   var Rxmedicines = [];
   var Rxadvice = Rx.advice;

@@ -32,6 +32,31 @@ const setInitialStateData = () => {
     if (authDoctor) {
         initialState.doctor = JSON.parse(authDoctor)
     }
+    const complaint = localStorage.getItem("complaint");
+    if (complaint) {
+        initialState.complaint = JSON.parse(complaint)
+    }
+    const medicine = localStorage.getItem("medicine");
+    if (medicine) {
+        initialState.medicine = JSON.parse(medicine)
+    }
+    const labtest = localStorage.getItem("labtest");
+    if (labtest) {
+        initialState.test = JSON.parse(labtest)
+    }
+    const patient = localStorage.getItem("patient");
+    if (patient) {
+        initialState.patient = JSON.parse(patient)
+    }
+    const advice = localStorage.getItem("advice");
+    if (advice) {
+        initialState.advice = JSON.parse(advice)
+    }
+    const followup = localStorage.getItem("followup");
+    if (followup) {
+        initialState.followup = JSON.parse(followup)
+    }
+
 }
 
 setInitialStateData();
