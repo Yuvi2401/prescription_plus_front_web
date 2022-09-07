@@ -4,6 +4,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import LoginForm from './loginform';
 import RegisterForm from './registerform';
+import RegisterDoctor from './doctorReg';
 
 
 
@@ -23,7 +24,7 @@ function SignIn() {
       <LoginForm/>
       </Tab>
       <Tab eventKey="register" title="Register">
-      <RegisterForm/>
+      <RegisterDoctor/>
       </Tab>
       
     </Tabs>

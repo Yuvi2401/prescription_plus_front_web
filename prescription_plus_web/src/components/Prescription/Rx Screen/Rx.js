@@ -9,10 +9,13 @@ import { GiTestTubes } from "react-icons/gi";
 import { BsCalendarDateFill, BsCardChecklist } from "react-icons/bs";
 import { GrNotes } from "react-icons/gr";
 import { GiMedicines } from "react-icons/gi";
+import axios from "axios";
 import {MdAdd} from 'react-icons/md';
+import { server_url } from "../../../config";
 
 const RxScreen = ({ setKey }) => {
-  const Rx = useSelector((state) => state.RxReducer);
+  const dispatch = useDispatch()
+  const Rx = useSelector(state=>state.RxReducer);
   var Rxsymptoms = [];
   var Rxmedicines = [];
   var Rxadvice = Rx.advice;
@@ -26,6 +29,104 @@ const RxScreen = ({ setKey }) => {
   var Rxlabtest = [];
   if (Rx.test) {
     Rxlabtest = Rx.test;
+  }
+  const createRx = async () =>{
+
+    console.log("hello")
+  let complaint = []
+  let medicine = []
+  let test = []
+
+  for(var i =0; i<Rx.complaint.length; i++){
+    complaint.push({"term":Rx.complaint[i].term,
+    "sctid": Rx.complaint[i].sctid,
+    "duration":Rx.complaint[i].duration.toString()+" "+Rx.complaint[i].durationtype.toString(),
+    "severity": Rx.complaint[i].severity,
+    "additional_info":Rx.complaint[i].additional_info})
+  }
+  for(var i=0; i<Rx.medicine.length; i++){
+    medicine.push(
+      {
+        "term":Rx.medicine[i].term,
+          "sctid":Rx.medicine[i].medSCTID,
+          "fkid":"",
+          "dosage":Rx.medicine[i].dosage,
+          "duration":{
+              "frequency": parseInt(Rx.medicine[i].duration),
+              "type": Rx.medicine[i].durationtype.toString()
+          },
+          "when":Rx.medicine[i].when,
+          "quantity":Rx.medicine[i].quantity,
+          "additional_info":Rx.medicine[i].additional_info
+      }
+    )
+  }
+  for(var i=0; i<Rx.test.length; i++){
+    test.push(
+      {
+        "term":Rx.test[i].term,
+        "id":"",
+        "additional_info":""
+          
+      }
+    )
+  }
+  const options = {
+      url: `${server_url}/rx/addRx`,
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
+      data: {
+        "doctor_details":{
+          "Id": Rx.doctor.mci,
+          "mobile": Rx.doctor.mobile,
+          "firstname": Rx.doctor.firstname,
+          "lastname":Rx.doctor.lastname,
+          "degree":Rx.doctor.degree,
+          "council": {
+              "id": Rx.doctor.councilid,
+              "state": Rx.doctor.councilstate
+          },
+          "signature":Rx.doctor.signature,
+          "address": {
+              "city": Rx.doctor.addresscity,
+              "locality": Rx.doctor.addresslocality,
+              "pincode": Rx.doctor.addresspincode,
+              "state": Rx.doctor.addressstate
+          }
+      },
+      "patient_details":{
+          "address": {
+              "city": Rx.patient.addresscity,
+              "locality": Rx.patient.addresslocality,
+              "pincode": Rx.patient.addresspincode,
+              "state": Rx.patient.addressstate
+          },
+          "age": Rx.patient.age,
+          "Id": Rx.patient.mobile,
+          "mobile": Rx.patient.mobile,
+          "firstname":Rx.patient.firstname,
+          "lastname":Rx.patient.lastname,
+          "sex": Rx.patient.sex,
+          "unique_health_id": Rx.patient.unique_health_id
+      },
+      "complaints": complaint,
+      "medicine":medicine,
+      "advice":Rx.advice,
+      "labtest":test,
+      "follow_up_date":{
+          "next":0,
+          "type":"",
+          "date":Rx.followup
+      },
+      "pdf":"",
+      "picture":""
+  }
+}
+  
+
   }
   return (
     <>
@@ -191,6 +292,10 @@ const RxScreen = ({ setKey }) => {
             </ul>
           </div>
         </div>
+        <br/>
+        <Button variant="primary" onClick={createRx}>
+            Submit
+          </Button>
       </div>
       {/* <Form>
         <Form.Group className="mb-3" controlId="formGroupEmail">

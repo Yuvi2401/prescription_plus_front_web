@@ -12,7 +12,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 
 
-export default function Reg_doctor({navigation}){
+export default function RegisterDoctor({navigation}){
 
   const Rx = useSelector(state=>state.RxReducer);
   let Rxdoctor = [{}]
@@ -97,7 +97,6 @@ export default function Reg_doctor({navigation}){
 
 
     return(
-        <div className='centered-div'>
         <Card style={{ width: '22rem' }}>
         <Card.Body>
         <Form>
@@ -166,7 +165,6 @@ export default function Reg_doctor({navigation}){
         </Form>
         </Card.Body>
         </Card>
-        </div>
        
     )
     
