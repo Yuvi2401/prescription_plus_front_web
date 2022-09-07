@@ -43,11 +43,18 @@ export default function Reg_doctor({navigation}){
     setFlag(true)
   }
   useEffect(()=>{
-    setFirstname(Rx.doctor.firstname)
-    setLastname(Rx.doctor.lastname)
-    SetEmail(Rx.doctor.email)
-    SetMobile(Rx.doctor.mobile)
-    SetMci(Rx.doctor.mci)
+    const setVars = ()=>{
+      setFirstname(Rx.doctor.firstname)
+      setLastname(Rx.doctor.lastname)
+      SetEmail(Rx.doctor.email)
+      SetMobile(Rx.doctor.mobile)
+      SetMci(Rx.doctor.mci)
+    }
+    
+    if(Rx.doctor.mci){
+     
+      setVars()
+    }
   },[Rx.doctor])
   const setdoctor= async()=>{
     

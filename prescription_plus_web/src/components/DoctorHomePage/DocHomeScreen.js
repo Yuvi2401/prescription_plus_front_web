@@ -30,7 +30,7 @@ function DocHomePage() {
   // }
 
   useEffect(() => {
-    console.log(Rx.doctor);
+    console.log(Rx);
     const setVar = () => {
       setName(Rx.doctor.firstname + " " + Rx.doctor.lastname);
       setMobile(Rx.doctor.mobile);

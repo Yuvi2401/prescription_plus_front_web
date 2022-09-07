@@ -67,12 +67,14 @@ function RxReducer(state = initialState, action) {
             localStorage.setItem("complaint", JSON.stringify([...state.complaint, action.payload]))
             return { ...state, complaint: [...state.complaint, action.payload] };
         case REMOVE_RX_COMPLAINTS:
+            localStorage.removeItem('complaint')
             localStorage.setItem("complaint", JSON.stringify([...state.complaint.filter(complaint => complaint.term!==action.payload) ]))
             return {...state, complaint: [...state.complaint.filter(complaint => complaint.term!==action.payload) ]};
         case UPDATE_RX_COMPLAINTS:
             const index = state.complaint.findIndex(com => com.term ===action.payload.term);
             let newArray = [...state.complaint];
             newArray[index].value = action.payload;
+            localStorage.removeItem('complaint')
             localStorage.setItem("complaint", JSON.stringify(newArray))
             return {...state, complaint: newArray};
 
@@ -82,12 +84,14 @@ function RxReducer(state = initialState, action) {
             localStorage.setItem("medicine", JSON.stringify([...state.medicine,action.payload]))
             return { ...state, medicine: [...state.medicine,action.payload] };
         case REMOVE_RX_MEDICINE:
+            localStorage.removeItem('medicine')
             localStorage.setItem("medicine", JSON.stringify( [ ...state.medicine.filter(medicine => medicine.term!==action.payload) ]))
                 return { ...state, medicine: [ ...state.medicine.filter(medicine => medicine.term!==action.payload) ]};
         case UPDATE_RX_MEDICINE:
                 index = state.medicine.findIndex(med => med.key ===action.payload.key);
                 newArray = [...state.medicine];
                 newArray[index].value = action.payload.value;
+                localStorage.removeItem('medicine')
                 localStorage.setItem("medicine", JSON.stringify(newArray))
                 return {...state, medicine: newArray};
         
@@ -97,14 +101,14 @@ function RxReducer(state = initialState, action) {
             return { ...state, advice: action.payload };
          
         case REMOVE_RX_ADVICE:
-            localStorage.setItem("advice", JSON.stringify(''))
+            localStorage.removeItem("advice")
             return { advice: ''};
 
         case SET_ADD_PATIENT:
             localStorage.setItem("patient", JSON.stringify(action.payload))
             return  { ...state, patient: action.payload };
         case REMOVE_PATIENT:
-            localStorage.setItem("patient", JSON.stringify({}))
+            localStorage.removeItem("patient")
             return { patient: {}};
 
         case SET_REG_DOCTOR:
@@ -112,7 +116,7 @@ function RxReducer(state = initialState, action) {
             localStorage.setItem("authDoctor", JSON.stringify(action.payload))
             return  { ...state, doctor: action.payload};
         case REMOVE_REG_DOCTOR:
-            localStorage.setItem("authDoctor", JSON.stringify({}))
+            localStorage.removeItem("authDoctor")
             return { doctor: {}};
 
         case SET_RX_FOLLOWUP: 
@@ -120,8 +124,14 @@ function RxReducer(state = initialState, action) {
             return { ...state, followup: action.payload };
 
         case CANCEL_RX: 
-
-            return {complaint: [], patient: {}, medicine: [], advice: '', followup: ''};
+            localStorage.removeItem("followup")
+            localStorage.removeItem("advice")
+            localStorage.removeItem("patient")
+            localStorage.removeItem("complaint")
+            localStorage.removeItem("medicine")
+            localStorage.removeItem('labtest')
+            console.log(state.doctor, "*****************INSIDE RX DOCTOR*************")
+            return {...state, complaint: [], patient: {}, medicine: [], advice: '', followup: '', test: []};
         
         case RX_ID:
             return { ...state, Rx_Id: [{key: action.payload.key, value: action.payload.value}] };
@@ -132,6 +142,7 @@ function RxReducer(state = initialState, action) {
             localStorage.setItem("labtest", JSON.stringify([...state.test, action.payload]))
             return { ...state, test: [...state.test, action.payload] };
         case REMOVE_TEST:
+            localStorage.removeItem('labtest')
             localStorage.setItem("labtest", JSON.stringify([...state.test.filter(test => test.term!==action.payload) ]))
             return { ...state, test: [...state.test.filter(test => test.term!==action.payload) ]};
             

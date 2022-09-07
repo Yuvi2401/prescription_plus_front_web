@@ -2,7 +2,7 @@ import { InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useContext } from "react";
-import { Button, Form, Col, Card } from "react-bootstrap";
+import { Button, Form, Col, Card, Row } from "react-bootstrap";
 import { StateContext, Prescription } from "../PrescriptionHomeScreen";
 import { IoIosSettings } from "react-icons/io";
 import { GiTestTubes } from "react-icons/gi";
@@ -94,7 +94,7 @@ const RxScreen = ({ setKey }) => {
           "lastname": Rx.doctor.lastname,
           "degree": Rx.doctor.degree,
           "council": {
-            "id": Rx.doctor.councilid,
+            "id": Rx.doctor.mci,
             "state": Rx.doctor.councilstate
           },
           "signature": Rx.doctor.signature,
@@ -109,7 +109,7 @@ const RxScreen = ({ setKey }) => {
           "address": {
             "city": Rx.patient.addresscity,
             "locality": Rx.patient.addresslocality,
-            "pincode": Rx.patient.addresspincode,
+            "pincode": 0,
             "state": Rx.patient.addressstate
           },
           "age": Rx.patient.age,
@@ -133,6 +133,7 @@ const RxScreen = ({ setKey }) => {
         "picture": ""
       }
     }
+    console.log(options.data)
     try {
       axios(options)
         .then(response => {
@@ -157,8 +158,8 @@ const RxScreen = ({ setKey }) => {
   }
 
 
-  const cancelrx = () => {
-    dispatch(cancelRx());
+  const cancelrx = async () => {
+    await dispatch(cancelRx());
     navigate('/doctorhome')
   }
 
@@ -327,16 +328,17 @@ return (
         </div>
       </div>
       <br />
-
+      <Row>
       <Col>
-      <Button variant="primary" onClick={() => createRx()}>
+      <Button variant="success" onClick={() => createRx()}>
         Submit
       </Button>
       </Col>
-      <Col><Button variant="primary" onClick={() => cancelrx()}>
+      <Col><Button variant="danger" onClick={() => cancelrx()}>
         Cancel
       </Button>
       </Col>
+      </Row>
     </div>
     {/* <Form>
         <Form.Group className="mb-3" controlId="formGroupEmail">
