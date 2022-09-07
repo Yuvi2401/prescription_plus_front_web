@@ -36,23 +36,9 @@ function DocHomePage() {
       setMobile(Rx.doctor.mobile);
       setEmail(Rx.doctor.email);
       setMci(Rx.doctor.mci);
-      console.log(
-        "*****************FLAGS****************",
-        flag,
-        isDoctorAvailable
-      );
+      
       setIsDoctorAvailable(true);
-      console.log(
-        "*****************FLAGS****************",
-        flag,
-        isDoctorAvailable
-      );
-      // setFlag(false)
-      console.log(
-        "*****************FLAGS****************",
-        flag,
-        isDoctorAvailable
-      );
+      
     };
 
     if (Rx.doctor.id) {
