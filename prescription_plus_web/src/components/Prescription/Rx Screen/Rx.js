@@ -293,7 +293,7 @@ const RxScreen = ({ setKey }) => {
           </div>
         </div>
         <br/>
-        <Button variant="primary" onClick={createRx}>
+        <Button variant="success" onClick={createRx}>
             Submit
           </Button>
       </div>

@@ -21,13 +21,16 @@ const Additionalinfo = () =>{
         setfolDate(date.toDateString())
         setDate('')
     }
+    const tileDisabled = ({ activeStartDate, date, view }) => {
+        return date < new Date()
+     }
     return (
-        <div className="centered-div-auto">
-        <Card style={{ width: 'auto', flex: 'top' }}>
+        <div className="centered-div-auto mt-5">
+        <Card style={{ width: 'auto', flex: 'top' , boxShadow :"0 3px 20px rgb(0 0 0 / 0.2)" , border : "0px solid white" , borderRadius : "10px" , padding : "15px"}}>
         <Card.Body>
         <Form>
         <Form.Group className="mb-3" controlId="formGridAdditionalInfo">
-            <Form.Label><h3>Advice</h3></Form.Label>
+            <Form.Label><h3><b>Advice</b></h3></Form.Label>
             <Form.Control  as="textarea"  placeholder= "Any Advice for Patient..." onChange={(e) => setAdditionalinfo(e.currentTarget.value)}/>
         </Form.Group>
         <br/>
@@ -36,9 +39,9 @@ const Additionalinfo = () =>{
             <InputGroup.Text>{foldate}</InputGroup.Text>
                 <br />
                 <Form.Label><h4>Pick a Date manually</h4></Form.Label>
-                <Calendar onChange={setDate}/>
+                <Calendar tileDisabled={tileDisabled} onChange={setDate}/>
         </Form.Group>
-        <Button variant="primary" onClick={()=>summitPage()}>
+        <Button variant="success" onClick={()=>summitPage()}>
             Submit
           </Button>
           </Form>
