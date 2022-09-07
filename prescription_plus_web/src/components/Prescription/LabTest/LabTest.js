@@ -29,11 +29,22 @@ const LabTest = () =>{
     const removelabtest = (k) =>{
         dispatch(removeTest(k));
     } 
+    const testJson = [
+        {
+            term: "Blood Test 1"
+        },
+        {
+            term: "Blood Test 2"
+        },
+        {
+            term: "Blood Test 3"
+        },
+      ];
 
     useEffect(() => {
         const fetchLabTest = async () => {
             setLoading(true);
-            var url = `${server_url}/search/labtest?data=${query}`
+            /*var url = `${server_url}/search/labtest?data=${query}`
             let res = await axios.get(url);
             res = res.data;
             res = res.data;
@@ -44,7 +55,8 @@ const LabTest = () =>{
                 term: val['term']});
                 
             }
-            setLabtest(labtestData)
+            setLabtest(labtestData)*/
+            setLabtest(testJson);
             setLoading(false);
             };
             if (query.length > 2) fetchLabTest();

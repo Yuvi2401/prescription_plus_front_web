@@ -35,10 +35,28 @@ const Complaints = () =>{
         { name: 'Months', value: '3' },
         { name: 'Year', value: '4' }
       ];
+      const testJson = [
+        {
+          key: 1,
+          value: "Fever",
+        },
+        {
+          key: 2,
+          value: "Headache",
+        },
+        {
+          key: 3,
+          value: "Stomach Ache",
+        },
+        {
+          key: 4,
+          value: "Back pain",
+        },
+      ];
     useEffect(() => {
     const fetchSymptoms = async () => {
         setLoading(true);
-        var url = `${server_url}/search/symptoms?data=${query}`
+        /*var url = `${server_url}/search/symptoms?data=${query}`
         let res = await axios.get(url);
         res = res.data;
         res = res.data;
@@ -51,7 +69,8 @@ const Complaints = () =>{
             value: val['Brand Name']});
             
         }
-        setSymptoms(symptomData)
+        setSymptoms(symptomData)*/
+        setSymptoms(testJson);
         setLoading(false);
         };
         if (query.length > 2) fetchSymptoms();

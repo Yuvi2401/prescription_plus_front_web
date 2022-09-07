@@ -377,9 +377,30 @@
 }
 .medsContainer .assignedMeds-title {
   /* font-size: 20px; */
+  width: 100%;
   font-weight: bold;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+.medsContainer .assignedMeds-title .icon {
+  color: hsl(0, 0%, 60%);
+  width: 30px;
+  height: 30px;
+  transition: all 0.5s ease;
+}
+.medsContainer .assignedMeds-title .icon:hover {
+  cursor: pointer;
+  color: green;
+  transform: rotateZ(180deg) scale(1.1);
+}
+/* .medsContainer .assignedMeds-empty {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+} */
 .medsContainer .assignedMeds-list {
   list-style: none;
   padding-left: 0;
@@ -393,7 +414,8 @@
 .medsContainer .assignedMeds-list-item {
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+  border: 1px solid hsl(120, 50%, 77%);
 }
 .medsContainer .assignedMeds-list-item .head {
   background-color: hsl(120, 50%, 97%);
@@ -450,6 +472,258 @@
 .medsContainer .assignedMeds-list-item .details-advice {
   text-align: center;
   color: hsl(120, 69%, 36%);
+}
+.medsContainer .assignedComplaints {
+  margin: 20px 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 15px 20px;
+}
+.medsContainer .assignedComplaints-title {
+  /* font-size: 20px; */
+  width: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.medsContainer .assignedComplaints-title .icon {
+  color: hsl(0, 0%, 60%);
+  width: 30px;
+  height: 30px;
+  transition: all 0.5s ease;
+}
+.medsContainer .assignedComplaints-title .icon:hover {
+  cursor: pointer;
+  color: green;
+  transform: rotateZ(180deg) scale(1.1);
+}
+/* .medsContainer .assignedComplaints-empty {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+} */
+.medsContainer .assignedComplaints-list {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+.medsContainer .assignedComplaints-list-item {
+  border-radius: 5px;
+  background-color: hsl(120, 50%, 97%);
+  border: 1px solid hsl(120, 50%, 87%);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.medsContainer .assignedComplaints-list-item-moderate {
+  background-color: hsl(57, 92%, 85%);
+  border: 1px solid hsl(57, 92%, 55%);
+}
+.medsContainer .assignedComplaints-list-item-severe {
+  background-color: hsl(0, 92%, 85%);
+  border: 1px solid hsl(0, 92%, 80%);
+}
+.medsContainer .assignedComplaints-list-item .title {
+  font-size: 18px;
+  color: hsl(120, 50%, 27%);
+  font-weight: 700;
+}
+.medsContainer .assignedComplaints-list-item .severity {
+  font-size: 14px;
+}
+.medsContainer .assignedComplaints-list-item-moderate .title {
+  color: hsl(57, 92%, 25%);
+}
+.medsContainer .assignedComplaints-list-item-severe .title {
+  color: hsl(0, 92%, 50%);
+}
+.medsContainer .assignedTests {
+  margin: 10px 0;
+  margin-top: 0;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 15px 20px;
+}
+.medsContainer .assignedTests-title {
+  /* font-size: 20px; */
+  width: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.medsContainer .assignedTests-title .icon {
+  color: hsl(0, 0%, 60%);
+  width: 30px;
+  height: 30px;
+  transition: all 0.5s ease;
+}
+.medsContainer .assignedTests-title .icon:hover {
+  cursor: pointer;
+  color: green;
+  transform: rotateZ(180deg) scale(1.1);
+}
+/* .medsContainer .assignedTests-empty {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+} */
+.medsContainer .assignedTests-list {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+.medsContainer .assignedTests-list-item {
+  border-radius: 5px;
+  background-color: hsl(120, 50%, 97%);
+  border: 1px solid hsl(120, 50%, 87%);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.medsContainer .assignedTests-list-item .title {
+  font-size: 18px;
+  color: hsl(120, 50%, 27%);
+  font-weight: 700;
+}
+.medsContainer .additionalPrev {
+  margin: 10px 0;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 15px 20px;
+}
+.medsContainer .additionalPrev-title {
+  /* font-size: 20px; */
+  width: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.medsContainer .additionalPrev-title .icon {
+  color: hsl(0, 0%, 60%);
+  width: 30px;
+  height: 30px;
+  transition: all 0.5s ease;
+}
+.medsContainer .additionalPrev-title .icon:hover {
+  cursor: pointer;
+  color: green;
+  transform: rotateZ(180deg) scale(1.1);
+}
+.medsContainer .additionalPrev-list {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+.medsContainer .additionalPrev-list-item {
+  border-radius: 5px;
+  overflow: hidden;
+  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+  border: 1px solid hsl(120, 50%, 77%);
+}
+.medsContainer .additionalPrev-list-item .head {
+  background-color: hsl(120, 50%, 97%);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.medsContainer .additionalPrev-list-item .head-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: hsl(120, 50%, 27%);
+}
+.medsContainer .additionalPrev-list-item .details {
+  padding: 20px 10px 10px 10px;
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+}
+.medsContainer .additionalPrev-list-item .details .followup {
+  font-weight: 700;
+  font-size: 24px;
+}
+/* .medsContainer .additionalPrev-list-item .details .empty {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+} */
+.medsContainer .empty {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+.medsContainer .empty .icon {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: hsl(0, 0%, 85%);
+  box-shadow: rgba(21, 130, 36, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  transition: all .3s ease;
+}
+.medsContainer .empty .icon > * {
+  width: 30px;
+  height: 30px;
+  color: hsl(0, 0%, 47%);
+}
+.medsContainer .empty .icon:hover {
+  cursor: pointer;
+  background-color: hsl(120, 50%, 87%);
+}
+.medsContainer .empty .icon:hover > * {
+  color: hsl(120, 50%, 47%);
+}
+.medsContainer .empty .text {
+  font-size: 18px;
 }
 .medsEditSec {
   margin-top: 30px;
