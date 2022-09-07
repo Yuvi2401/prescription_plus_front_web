@@ -4,6 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { setComplaints, removeComplaints, updateComplaints } from "../../../redux/actions";
 import {Button,Col,Form,Row,ListGroup,Collapse,InputGroup,ButtonGroup,Card, Dropdown, DropdownButton} from 'react-bootstrap';
 import {server_url} from "../../../config";
+import { FiSearch } from "react-icons/fi";
+import { GiMedicines } from "react-icons/gi";
+import { IoChevronDown } from "react-icons/io5";
+import { MdModeEdit, MdDelete } from "react-icons/md";
 
 const Complaints = () =>{
     const dispatch = useDispatch()
@@ -117,36 +121,95 @@ const Complaints = () =>{
     }
       
     return (
-        <div >
-            <input type='text' 
-            placeholder="Search Complaints.." 
-            className="search" 
-            onChange={(e) => setQuery(e.target.value)}
-            disabled = {search}
-            />
-            {loading ? (
-            <h4>Loading ...</h4>
-            ) : (
-            symptoms.map((item) => 
-            <ListGroup defaultActiveKey={item.key}>
-                <ListGroup.Item action onClick={()=>{
-                onPressHandler(item.key, item.value)
-                }}>
-                <h6>{item.value}</h6>
-                </ListGroup.Item>
-            </ListGroup>
-                )
+        <div className="leftPanel">
+               <div className="medsContainer">
+        {!search && (
+          <div className="search">
+            <div className="search-inputSec">
+              <FiSearch className="search-inputSec-icon" />
+              <input
+                type="text"
+                className="search-inputSec-text"
+                placeholder="Search Symptoms..."
+                onChange={(e) => setQuery(e.target.value)}
+                disabled={search}
+              />
+            </div>
+            {!loading && symptoms.length > 0 && query.length > 2 && (
+              <ul className="search-resultSec">
+                {symptoms.slice(0, 6).map((item) => {
+                  return (
+                    <li
+                      className="search-resultSec-item"
+                      onClick={() => {
+                        onPressHandler(item.key, item.value);
+                        setQuery("");
+                      }}
+                    >
+                      {item.value}
+                    </li>
+                  );
+                })}
+              </ul>
             )}
-        <br />
-        {Rxsymptoms.map((val) => (
-                <Card >
-                <Card.Body>
-                  <Card.Title>{val.term}</Card.Title>
-                  <Button variant="secondary" disabled = {search} onClick={()=>{removesymptom(val.term)}} >Remove Medicine</Button>
-                </Card.Body>
-              </Card>
-            ))}
-      <br />
+            {loading && (
+              <div className="search-loadingSec">
+                <div class="lds-spinner">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+        {Rxsymptoms.length === 0 && !search && (
+          <div className="noMeds">
+            <div className="noMeds-icon">
+              <GiMedicines />
+            </div>
+            <div className="noMeds-heading">No Symptoms assigned</div>
+            <div className="noMeds-subHeading">
+              Search and select details to assign Symptoms to patient
+            </div>
+          </div>
+        )}
+        {!search && Rxsymptoms.length > 0 && (
+          <div className="assignedMeds">
+            <div className="assignedMeds-title">Complaints :</div>
+            <ul className="assignedMeds-list">
+              {Rxsymptoms.map((val) => {
+                return (
+                  <li className="assignedMeds-list-item" key={val.medSCTID}>
+                    <div className="head">
+                      <div className="head-title">{val.term}</div>
+                      <div className="head-icons">
+                       
+                        <MdDelete
+                          className="delete"
+                          onClick={()=>{removesymptom(val.term)}}
+                        />
+                        
+                      </div>
+                    </div>
+                   
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+      </div>
+          
        <>
         <Collapse in={open}>
           <div className="centered-div-auto">
