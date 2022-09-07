@@ -4,9 +4,22 @@ import Navbar from "react-bootstrap/Navbar";
 import { Button, Form } from "react-bootstrap";
 import { FiSearch } from "react-icons/fi";
 import { DiJqueryLogo } from "react-icons/di";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
 
 const NavBar = () => {
+  // window.location.reload(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const logout = ()=>{
+    localStorage.clear()
+    sessionStorage.clear()
+    console.log(location.pathname)
+    navigate('/doctorhome')
+    window.location.reload(false)
+    
+    
+    
+  };
   return (
     <>
       <nav className="topnav">
@@ -22,7 +35,9 @@ const NavBar = () => {
         <NavLink to={`https://healthplus.flipkart.com/`} target='blank'>
           <button className="right-textItem">Health+</button>
         </NavLink>
-          <button className="right-textItem right-logout">Logout</button>
+        {/* <NavLink to={`/doctorhome`} > */}
+          <button className="right-textItem right-logout" onClick={()=>logout()}>Logout</button>
+          {/* </NavLink> */}
         </div>
       </nav>
       {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
