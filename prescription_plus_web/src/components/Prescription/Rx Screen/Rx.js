@@ -156,7 +156,7 @@ const RxScreen = ({ setKey }) => {
 
 
         }).catch(err => { console.log(err.response.data) });
-
+        dispatch(cancelRx());
     } catch (e) {
       console.log(e.message)
     }

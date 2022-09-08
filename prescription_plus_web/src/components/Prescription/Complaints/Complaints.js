@@ -92,8 +92,8 @@ const Complaints = () =>{
         dispatch(removeComplaints(k));
     } 
     
-    const AddComplaints = async ()=>{
-        await dispatch(setComplaints({
+    const AddComplaints = ()=>{
+        dispatch(setComplaints({
             sctid: complaint.key,
             term: complaint.term, 
             severity: severity,
@@ -209,10 +209,71 @@ const Complaints = () =>{
           </div>
         )}
       </div>
-          
-       <>
+      {open && (
+        <div className="medsEditSec">
+          <div className="medsEditSec-title">{complaint.term}</div>
+          <div className="medsEditSec-infoContainer">
+            <div className="medsEditSec-info">
+              <div className="medsEditSec-info-label">Timing:</div>
+              <div className="medsEditSec-info-input">
+                <select
+                  className="custom-select"
+                  value={severity}
+                  onChange={(e) => setSeverity(e.target.value)}
+                >
+                  <option value={null}>Select...</option>
+                  {Severity.map((val) => (
+                    <option value={val.name}>{val.name}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="medsEditSec-info">
+              <div className="medsEditSec-info-label">Duration:</div>
+              <div className="medsEditSec-info-input">
+                <input
+                  className="custom-input custom-input-number"
+                  type="number"
+                  placeholder="Enter..."
+                  onChange={(e) => setDuration(e.currentTarget.value)}
+                  value={Rxsymptoms.duration}
+                />
+                <select
+                  className="custom-select custom-select-small"
+                  value={durationtype}
+                  onChange={(e) => setDurationType(e.target.value)}
+                >
+                  <option value={null}>Select...</option>
+                  {Duration.map((val) => (
+                    <option value={val.name}>{val.name}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="medsEditSec-info">
+              <div className="medsEditSec-info-input medsEditSec-info-input-textarea">
+                <textarea
+                  name=""
+                  id=""
+                  rows="4"
+                  placeholder="Advice..."
+                  className="textarea"
+                  onChange={(e) => setAdvice(e.currentTarget.value)}
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div className="medsEditSec-actions">
+            <div className="button button-submit" onClick={AddComplaints}>
+              Submit
+            </div>
+            <div className="button button-cancel">Cancel</div>
+          </div>
+        </div>
+      )}
+       {/* <>
         <Collapse in={open}>
-          <div className="centered-div-auto">
+        <div className="medsEditSec">
         <Card style={{ width: 'auto', flex: 'top' }}>
         <Card.Body>
          <Form>
@@ -261,7 +322,7 @@ const Complaints = () =>{
           </Card>
           </div>
           </Collapse>
-     </>
+     </> */}
       </div>
     )
 }
