@@ -81,7 +81,7 @@ function CurrentPatient() {
       setShow(false);
       setFlag(false);
     };
-    if (flag) {
+    if (Rx.patient.firstname) {
       setVars();
     }
 

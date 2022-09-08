@@ -64,7 +64,7 @@ function DocHomePage() {
             </div> */}
               <img className="profilePic" src="profile.png" />
               <div className="nameSection">
-                <div className="nameSection-name">{name}</div>
+                <div className="nameSection-name">Dr. {name}</div>
                 {/* <div className="nameSection-lastCheck">
               Last check-in: 04 Jan 2022
             </div> */}

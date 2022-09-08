@@ -1,14 +1,14 @@
 
 import React from "react";
 
-import samplePDF from '../../assests/uploadedRx/p1.pdf'
+import samplePDF from '../../../assests/uploadedRx/p3.pdf'
 
 
 import PDFViewer from './pdf_viewer';
 
 export default function RxViewer() {
   return (
-    <div >
+    <div style={{width: 'auto'}}>
         <PDFViewer pdf = {samplePDF}/>
     </div>
   );
