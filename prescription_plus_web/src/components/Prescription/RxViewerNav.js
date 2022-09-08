@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import CurrentPatient from "../Patient/currentPatient";
 
 const RxViewerNav =()=>  {
-    
+   
     return (
         <div>
             <Tabs
@@ -23,7 +23,7 @@ const RxViewerNav =()=>  {
                     <CurrentPatient/>
                 </Tab>
                 <Tab eventKey="past_records" title="Past medical records">
-                    <RxViewer/>
+                    <RxViewer />
                 </Tab>
             </Tabs>
         </div>

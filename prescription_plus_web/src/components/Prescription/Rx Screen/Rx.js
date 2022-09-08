@@ -14,6 +14,10 @@ import { MdAdd } from 'react-icons/md';
 import { server_url } from "../../../config";
 import { setRx_Id } from "../../../redux/actions";
 import { cancelRx } from "../../../redux/actions";
+import { Modal } from "react-bootstrap";
+import { useState } from "react";
+import PDFViewer from "../generated_pdf/pdf_viewer";
+import RxViewer from "../generated_pdf/viewer_cntrl";
 
 
 const RxScreen = ({ setKey }) => {
@@ -21,6 +25,14 @@ const RxScreen = ({ setKey }) => {
   const dispatch = useDispatch()
   const Rx = useSelector(state => state.RxReducer);
   console.log(Rx)
+  const [show, setShow] = useState(false)
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleShow = () => {
+    setShow(true);
+    // console.log(Rx.patient.isAdded, "--------------------adadagvsdb-------------")
+  };
   var Rxsymptoms = [];
   var Rxmedicines = [];
   var Rxadvice = Rx.advice;
@@ -140,6 +152,7 @@ const RxScreen = ({ setKey }) => {
           console.log(response.data);
           dispatch(setRx_Id({ key: 0, value: response.data.data._id }))
           generatepdf(response.data.data._id);
+          handleShow()
 
 
         }).catch(err => { console.log(err.response.data) });
@@ -152,7 +165,9 @@ const RxScreen = ({ setKey }) => {
 
   const generatepdf = async (id) => {
     const url = `${server_url}/rx/pdf?id=${id}`
-    try { let res = await axios.get(url); }
+    try { 
+      let res = await axios.get(url); 
+    }
     catch (e) { console.log(e) }
 
   }
@@ -329,6 +344,7 @@ return (
       </div>
       <br />
       <Row>
+      
       <Col>
       <Button variant="success" onClick={() => createRx()}>
         Submit
@@ -339,6 +355,18 @@ return (
       </Button>
       </Col>
       </Row>
+      <Modal size="lg" show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Generated RX</Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{width: 'auto'}}>
+          <RxViewer/>
+        </Modal.Body>
+        <Modal.Footer>
+        <Button variant="secondary">Back to editing</Button>
+        <Button onClick={()=>cancelrx()} variant="primary">Save changes</Button>
+      </Modal.Footer>
+      </Modal>
     </div>
     {/* <Form>
         <Form.Group className="mb-3" controlId="formGroupEmail">
