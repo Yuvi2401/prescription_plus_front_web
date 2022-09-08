@@ -5,7 +5,7 @@ import Calendar from 'react-calendar';
 import {Button,Col,Form,Row,ListGroup,Collapse,InputGroup,ButtonGroup,Card} from 'react-bootstrap';
 import 'react-calendar/dist/Calendar.css';
 
-const Additionalinfo = () =>{
+const Additionalinfo = ({ setKey }) =>{
     const dispatch = useDispatch()
     const Rx = useSelector(state=>state.RxReducer);
     const [additionalinfo, setAdditionalinfo] = useState(Rx.advice)
@@ -14,7 +14,8 @@ const Additionalinfo = () =>{
 
     const summitPage = async () =>{
         console.log(foldate)
-        await dispatch(setAdvice(additionalinfo));
+        dispatch(setAdvice(additionalinfo));
+        setKey("home")
         dispatch(setFollowup(foldate));
     }
     if(date){

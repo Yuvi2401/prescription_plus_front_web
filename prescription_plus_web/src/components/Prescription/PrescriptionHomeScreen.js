@@ -36,7 +36,7 @@ const Prescription = (props) => {
               <LabTest />
             </Tab>
             <Tab eventKey="additioninfo" title="Additional Info">
-              <Additionalinfo />
+              <Additionalinfo setKey={setKey}/>
             </Tab>
           </Tabs>
         </div>
