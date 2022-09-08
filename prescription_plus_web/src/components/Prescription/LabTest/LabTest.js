@@ -9,7 +9,7 @@ import { BiTestTube } from "react-icons/bi";
 import { IoChevronDown } from "react-icons/io5";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 
-const LabTest = () =>{
+const LabTest = ({setKey}) =>{
     const dispatch = useDispatch()
     const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false);
@@ -157,7 +157,17 @@ const LabTest = () =>{
           </div>
         )}
       </div>
-         
+      <Row>
+      <Col>
+      <Button variant="success" onClick={()=>setKey("home")}>
+        Preview
+      </Button>
+      </Col>
+      <Col><Button variant="success" onClick={()=>setKey("additioninfo")}>
+        Next
+      </Button>
+      </Col>
+      </Row>
         </div>
     )
 }

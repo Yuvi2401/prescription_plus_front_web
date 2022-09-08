@@ -43,7 +43,7 @@ const Additionalinfo = ({ setKey }) =>{
                 <Calendar tileDisabled={tileDisabled} onChange={setDate}/>
         </Form.Group>
         <Button variant="success" onClick={()=>summitPage()}>
-            Submit
+            Preview
           </Button>
           </Form>
           </Card.Body>

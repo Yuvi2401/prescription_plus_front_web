@@ -27,13 +27,13 @@ const Prescription = (props) => {
               <RxScreen setKey={setKey} />
             </Tab>
             <Tab eventKey="complaints" title="Complaints">
-              <Complaints />
+              <Complaints  setKey={setKey}  />
             </Tab>
             <Tab eventKey="medicine" title="Medicines">
-              <Medicines />
+              <Medicines setKey={setKey} />
             </Tab>
             <Tab eventKey="labtest" title="Lab Tests">
-              <LabTest />
+              <LabTest setKey={setKey}/>
             </Tab>
             <Tab eventKey="additioninfo" title="Additional Info">
               <Additionalinfo setKey={setKey}/>

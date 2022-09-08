@@ -9,7 +9,7 @@ import { GiMedicines } from "react-icons/gi";
 import { IoChevronDown } from "react-icons/io5";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 
-const Complaints = () =>{
+const Complaints = ({setKey}) =>{
     const dispatch = useDispatch()
     const [symptoms, setSymptoms] = useState([])
     const [query, setQuery] = useState("");
@@ -271,6 +271,17 @@ const Complaints = () =>{
           </div>
         </div>
       )}
+       <Row>
+      <Col>
+      <Button variant="success" onClick={()=>setKey("home")}>
+        Preview
+      </Button>
+      </Col>
+      <Col><Button variant="success" onClick={()=>setKey("medicine")}>
+        Next
+      </Button>
+      </Col>
+      </Row>
        {/* <>
         <Collapse in={open}>
         <div className="medsEditSec">

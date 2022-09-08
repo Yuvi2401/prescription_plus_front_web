@@ -23,7 +23,7 @@ import { GiMedicines } from "react-icons/gi";
 import { IoChevronDown } from "react-icons/io5";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 
-const Medicines = () => {
+const Medicines = ({setKey}) => {
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -395,6 +395,17 @@ const Medicines = () => {
           </div>
         </div>
       )}
+       <Row>
+      <Col>
+      <Button variant="success" onClick={()=>setKey("home")}>
+        Preview
+      </Button>
+      </Col>
+      <Col><Button variant="success" onClick={()=>setKey("labtest")}>
+        Next
+      </Button>
+      </Col>
+      </Row>
       {/* <input type='text' 
       placeholder="Search Medicines.." 
       className="search" 
