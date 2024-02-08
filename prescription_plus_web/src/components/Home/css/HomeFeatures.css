@@ -1,0 +1,35 @@
+/* FeaturesSection.css */
+.features-section {
+    width: 100%;
+  
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .features-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .feature {
+    flex-basis: 20%; /* Adjust the width of each feature */
+    margin: 10px;
+  }
+  
+  .feature-image {
+    background-size: cover;
+    border-radius: 20px; /* Rounded corners for the search bar */
+    height: 200px; /* Example height */
+    margin-bottom: 10px;
+    border-radius: 20px;
+  }
+
+  
+  /* Add a specific class for each image based on its name */
+  .consultation { background-image: url('../../../assests/images/doctor.png'); }
+  .calendar-management { background-image: url('../../../assests/images/uhbook.webp'); }
+  .slot-booking { background-image: url('../../../assests/images/patient\ home.jpg'); }
+  .medical-records { background-image: url('../../../assests/images/uhcharts.webp'); }
+  .patient-visibility { background-image: url('../../../assests/images/admin.jpg'); }
+  

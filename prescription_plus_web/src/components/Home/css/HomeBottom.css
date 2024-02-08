@@ -1,0 +1,63 @@
+/* HospitalBanner.css */
+.hospital-banner {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    background-color: #0056b3;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5; /* Adjust to match your design */
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .hospital-banner-image {
+    display: flex;
+    flex: 2;
+
+    width: 700px; /* Adjust to match your design */
+    height: 400px;
+    justify-content: center;
+  }
+  .hospital-banner-image .img {
+    border-radius: 20px;
+  }
+  .hospital-banner-content {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+  }
+  
+  .hospital-banner-content h1 {
+    margin-bottom: 20px; /* Adjust to match your design */
+    color: #333;
+    font-size: 5em; /* Adjust to match your design */
+    font-weight: 600;
+  }
+  
+  .hospital-banner-content p {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 1.5em; /* Adjust to match your design */
+  }
+  
+.hospital-banner-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .hospital-banner-buttons .btn-get-started,
+  .hospital-banner-buttons .btn-learn-more {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #0056b3; /* Example button background color */
+    color: white;
+    font-weight: bold;
+  }
+  
+  .hospital-banner-buttons .btn-learn-more {
+    background-color: #5A5A5A /* Different background color for the second button */
+  }
+  

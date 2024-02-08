@@ -1,0 +1,57 @@
+.search-container {
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    padding: 10px; /* Adjust padding as needed */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: auto; /* Center the container */
+    max-width: 1500px; /* Adjust the max-width as needed for your design */
+    height: 300px;
+  }
+  
+  .search-container h1 {
+    flex:2;
+    color: #333; /* Assuming white text color for better contrast */
+    margin-bottom: 20px;
+    font-size: xxx-large;
+    font-style: bold;
+  }
+  
+  .search-bar {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 20px; /* Rounded corners for the search bar */
+    overflow: hidden; /* Ensures children conform to border radius */
+  }
+  
+  .search-input {
+    padding: 10px;
+    border: none; /* Removing border as the search bar has its own background */
+    width: 250px; /* Adjust according to design */
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff; /* Adjust the color to match your design */
+    color: white;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Additional styles to ensure the layout does not stretch */
+  body, html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /* Set a background color that complements your search container if necessary */
+    background-color: #ffff; /* Example background color */
+  }
+  

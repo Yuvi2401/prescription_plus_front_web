@@ -1,0 +1,61 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-logo {
+    flex: 4;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .heart-icon {
+    color: black; /* Replace with the actual color code used in the logo */
+    margin-right: 10px;
+  }
+  
+  .navbar-links {
+    flex: 1;
+    display: flex;
+  }
+  
+  .navbar-link {
+    padding: 0 15px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    width: auto;
+  }
+  
+  .navbar-link:hover {
+    text-decoration: underline;
+  }
+  
+  .navbar-auth > .btn {
+    flex: 1;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-signup {
+    background-color: #007bff; /* Replace with the actual color code for the sign-up button */
+    color: #fff;
+  }
+  
+  .btn-login {
+    background-color: transparent;
+    color: #007bff; /* Replace with the actual color code for the login button text */
+  }
+  
+  .btn-login:hover {
+    background-color: #f8f9fa;
+  }
+  

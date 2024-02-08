@@ -25,13 +25,16 @@ const NavBar = () => {
       <nav className="topnav">
         <NavLink to={`/`} className="logo navLink">
           <DiJqueryLogo className="logo-icon" />
-          <div className="logo-text">Prescription+</div>
+          <div className="logo-text">UniHealth</div>
         </NavLink>
         <div className="search">
           <FiSearch className="search-icon" />
           <div className="search-text">Search Patient</div>
         </div>
         <div className="right">
+        <NavLink to={`https://healthplus.flipkart.com/`} target='blank'>
+          <button className="right-textItem">Health+</button>
+        </NavLink>
         <NavLink to={`https://healthplus.flipkart.com/`} target='blank'>
           <button className="right-textItem">Health+</button>
         </NavLink>

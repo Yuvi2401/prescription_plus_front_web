@@ -83,7 +83,7 @@
   align-items: center;
   gap: 5px;
   color: black;
-  font-family: "inter", cursive;
+  font-family: "Inter";
 }
 .topnav .logo:hover {
   cursor: pointer;
