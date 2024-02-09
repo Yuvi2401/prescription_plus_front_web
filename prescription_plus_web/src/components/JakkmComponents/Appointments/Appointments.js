@@ -35,7 +35,7 @@ return (
         </tbody>
         </table>
     </div>
-);
+  );
 }
 
 export default Appointments;

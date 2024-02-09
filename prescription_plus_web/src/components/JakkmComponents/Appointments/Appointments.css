@@ -3,28 +3,32 @@
     max-width: 900px;
     margin: auto;
     padding: 20px;
-}
-
-h1 {
+  }
+  
+  h1 {
     text-align: left;
     margin-bottom: 20px;
-}
-.search-bar input[type="text"] {
+  }
+
+  
+  .search-bar input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
-.appointments-table {
+  }
+  
+  .appointments-table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #eee;
     border-radius: 4px;
-}
-.appointments-table th,
-.appointments-table td {
+  }
+  
+  .appointments-table th,
+  .appointments-table td {
     text-align: left;
     padding: 12px;
     border-bottom: 1px solid #eee;
-}
+  }

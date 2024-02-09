@@ -1,0 +1,7 @@
+.main-Container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 75px;
+    justify-content: center;
+}

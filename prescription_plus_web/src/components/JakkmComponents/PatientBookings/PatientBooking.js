@@ -7,7 +7,11 @@ const PatientBooking = () => {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
-  const patientBookingDetails = {name: "Jakkam", bookingId: 1201001, Summary: "", Attachments: "", date :"10/5/24"}
+  const patientBookingDetails = [{name: "Jakkam", bookingId: 1201001, Summary: "", Attachments: "", date :"10/5/24"},
+  {name: "Jakkam", bookingId: 1201001, Summary: "", Attachments: "", date :"10/5/24"}]
+
+  const historyBookingDetails = [{name: "Ashok", bookingId: 1201001, Summary: "", Attachments: "", date :"10/5/24"},
+  {name: "yuvi", bookingId: 1201001, Summary: "", Attachments: "", date :"10/5/24"}]
 
   return (
     <div className="form-container">
@@ -27,24 +31,56 @@ const PatientBooking = () => {
       </div>
       <div className="tab-content">
         {activeTab === 'UPCOMING' && (
-          <div className="general-form">
-            <label>
-              Name : {patientBookingDetails.name}
-            </label>
-            <label>
-              Date : {patientBookingDetails.date}
-            </label>
-            <label>
-              bookingId : {patientBookingDetails.bookingId}
-            </label>
-            <label>
-              Summary : {patientBookingDetails.Summary}
-            </label>
-            <label>
-              Attachments : {patientBookingDetails.Attachments}
-            </label>
-            <button className="save-btn">DETAILS</button>
-          </div>
+            patientBookingDetails.map((patient) => (
+            <div className="general-form">
+              <div className="general-form-row">
+                <label>
+                  Name : {patient.name}
+                </label>
+                <label>
+                  Date : {patient.date}
+                </label>
+                <label>
+                  bookingId : {patient.bookingId}
+                </label>
+              </div>
+              <div className="general-form-row">
+              <label>
+                Summary : {patient.Summary}
+              </label>
+              <label>
+                Attachments : {patient.Attachments}
+              </label>
+              <button className="save-btn">DETAILS</button>
+              </div>
+            </div>
+            ))
+        )}
+        {activeTab === 'HISTORY' && (
+            historyBookingDetails.map((patient) => (
+            <div className="general-form">
+              <div className="general-form-row">
+                <label>
+                  Name : {patient.name}
+                </label>
+                <label>
+                  Date : {patient.date}
+                </label>
+                <label>
+                  bookingId : {patient.bookingId}
+                </label>
+              </div>
+              <div className="general-form-row">
+              <label>
+                Summary : {patient.Summary}
+              </label>
+              <label>
+                Attachments : {patient.Attachments}
+              </label>
+              <button className="save-btn">DETAILS</button>
+              </div>
+            </div>
+            ))
         )}
         {/* You would add similar conditional rendering for other tabs' content */}
       </div>

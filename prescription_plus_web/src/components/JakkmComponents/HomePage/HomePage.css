@@ -1,0 +1,52 @@
+
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+    align-items: center;
+}
+
+.app-header {
+    background-color: #fff;
+    padding: 20px;
+    color: black;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.menu a {
+    margin-right: 15px;
+}
+
+.search-section h1 {
+    font-size: 24px;
+}
+
+.search-box input[type="text"] {
+    margin-right: 10px;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.for-doctors, .for-patients {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.for-doctors button, .for-patients button {
+    margin-right: 10px;
+}
